@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="container">
+        <div class="collection_text">Top10</div>
+    </div>
+    <div class="table-responsive-sm">
+        <table id="eventTable" class="table TableHover TableMidText" style="width: 50%;margin-left: 25%;margin-right: 25%; background-color: #a5c9a5; cursor: pointer">
+            {{#each uporabniki as | uporabnik |}}
+                {{#if uporabnik.skupnaOcena}}
+                    <tr onclick="window.location = '/profil/{{uporabnik._id}}'">
+                    <td id="uporabnik">{{uporabnik.username}}</td>
+                    <td>{{uporabnik.skupnaOcena}}</td>
+                    <td style="text-align:center"><img src="{{isValid uporabnik.skupnaOcena}}" alt="" style="height:120px; width: 120px"></td>
+                {{/if}}
+            {{/each}}
+        </table>
+    </div>
+</div>

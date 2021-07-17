@@ -1,0 +1,29 @@
+name: Neprekinjena dostava
+
+on: # Kdaj se začne izvajanje delovnega toka?
+  push:
+    branches:
+      - production # Ob vsaki uveljavitvi na vejo produkcije.
+    paths-ignore:
+      - "README.md" # Ignoriramo spremembe v dokumentaciji.
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        # Install NPM dependencies, cache them correctly
+        # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          build: npm run build
+          start: npm start
+      - name: Posredovanje na Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          branch: production

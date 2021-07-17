@@ -1,0 +1,130 @@
+<div class="header_section"  style="background-image: url('img/704428.jpg')">
+    <div class="img-slider">
+        <div class="slide active">
+            <img src="img/doggobanner2.jpg" alt="">
+            <div class="info">
+                <h2>Najboljši lastni projekt. Lp, LP12</h2>
+                <p id="slide1">Dobrodošli na domači strani najboljše in povsem delujoče platforme za sprehajanje psov.</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="img/doggobanner3.jpg" alt="" style="height:100%">
+            <div class="info">
+                <h2>Zakaj bi vašega psa sprehajali sami?</h2>
+                <p id="slide2">Saj niste kupili psa, da ga boste sedaj sprehajali cel dan? Pustite, da to nalogo prevzamejo drugi!</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="img/doggobanner4.jpg" alt="">
+            <div class="info">
+                <h2>Vaš kuža je naveličan gledati, kako ležite na kavču.</h2>
+                <p id="slide3">Morda preverite za vse odlične sprehajalce, ki so vam na voljo.</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="img/doggobanner5.jpg" alt="">
+            <div class="info">
+                <h2>Preverite najboljše sprehajalce v zavihku Top10!</h2>
+                <p id="slide4">Namesto da se sami rekreirate, raje plačajte nekomu drugemu, da to počne za vas!</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="img/doggobanner6.jpg" alt="">
+            <div class="info">
+                <h2>Kaj še čakate?</h2>
+                <p>Vaš kuža je že nestrpen in si ogleduje vaše nove copate za malico.</p>
+            </div>
+        </div>
+        <div class="navigation">
+            <div id="prvi" class="btn active"></div>
+            <div id="drugi" class="btn"></div>
+            <div class="btn"></div>
+            <div class="btn"></div>
+            <div class="btn"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">&nbsp</div>
+        <div class="row">
+            <div class="col-12">
+                <iframe id="twitterfeed" src='https://www.sociablekit.com/app/embed/60323' frameborder='0' width='100%' height='1000'></iframe>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- New Arrivals section start -->
+
+    <!-- New Arrivals section end -->
+    <!-- Javascript files-->
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/plugin.js"></script>
+    <!-- sidebar -->
+    <!-- javascript -->
+    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        var slides = document.querySelectorAll('.slide');
+        var btns = document.querySelectorAll('.btn');
+        var images = document.querySelectorAll('.slika1');
+        images.forEach((image) => {
+            image.src="img/doggobanner4.jpg";
+        });
+        let currentSlide = 1;
+
+        // Javascript for image slider manual navigation
+        var manualNav = function(manual){
+            slides.forEach((slide) => {
+                slide.classList.remove('active');
+
+                btns.forEach((btn) => {
+                    btn.classList.remove('active');
+                });
+            });
+
+            slides[manual].classList.add('active');
+            btns[manual].classList.add('active');
+        }
+
+        btns.forEach((btn, i) => {
+            btn.addEventListener("click", () => {
+                manualNav(i);
+                currentSlide = i;
+            });
+        });
+
+        // Javascript for image slider autoplay navigation
+        var repeat = function(activeClass){
+            let active = document.getElementsByClassName('active');
+            let i = 1;
+
+            var repeater = () => {
+                setTimeout(function(){
+                    [...active].forEach((activeSlide) => {
+                        activeSlide.classList.remove('active');
+                    });
+
+                    slides[i].classList.add('active');
+                    btns[i].classList.add('active');
+                    i++;
+
+                    if(slides.length == i){
+                        i = 0;
+                    }
+                    if(i >= slides.length){
+                        return;
+                    }
+                    repeater();
+                }, 10000);
+            }
+            repeater();
+        }
+        repeat();
+    </script>
+</div>

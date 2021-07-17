@@ -1,0 +1,99 @@
+<div class="container">
+    <h1>{{dogodek.ime_dogodka}}</h1>
+    <div class="container">
+        <div class="collection_text">Podrobnosti izbranega oglasa</div>
+    </div>
+    <table class="table table-hover table-bordered table-striped">
+        <button   class="btn btn-primary btn-lg active" onclick="window.location = '/profil/{{dogodek.kreatorID}}'">
+            Preglej profil
+        </button>
+        <tr onclick="window.location = '/profil/{{dogodek.kreatorID}}'">
+            <td>Naslov oglasa</td>
+            <td>{{dogodek.naslovOglasa}}</td>
+        </tr>
+        <tr>
+            <td>Kontakt</td>
+            <td>{{dogodek.kontakt}}</td>
+        </tr>
+        <tr>
+            <td>Čas dogodka</td>
+            <td>{{datumHome dogodek.datum}}</td>
+        </tr>
+        <tr>
+            <td>Trajanje(v minutah)</td>
+            <td>{{dogodek.trajanje}}</td>
+        </tr>
+        <tr>
+            <td>Opis oglasa</td>
+            <td>{{dogodek.opisZahtev}}</td>
+        </tr>
+
+    </table>
+    <form method="POST" action="/uporabniki/priljubljeni/{{dogodek._id}}">
+        <div class="container">
+            <div class="form-group">
+                <button type="submit" id="uredi" class="btn btn-primary">DodajMedPriljubljene</button>
+            </div>
+        </div>
+    </form>
+    <div class="row">
+
+        {{#if dogodek.jeRezerviran}}
+            <div class="form-group">
+                <button value="Rezervirano" id="alreadyRezervirano" type="submit" class="btn btn-primary" disabled>Že rezervirano</button>
+            </div>
+        {{else}}
+            <div class="form-group">
+                <button id="rezerviraj" type="submit" onclick="doSomething()" class="btn btn-primary">Rezerviraj</button>
+            </div>
+        {{/if}}
+    </div>
+    <div id="id_confrmdiv" style="display: none">
+        <form method="get" action="/rezervirajDogodek/{{dogodek._id}}">
+            <button id="id_truebtn">Da</button>
+            <button id="id_falsebtn">Ne</button>
+        </form>
+    </div>
+    <div>
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/sl_SI/sdk.js#xfbml=1&version=v10.0" nonce="D5irB6KQ"></script>
+        <!-- Your share button code -->
+        <div class="fb-share-button" data-href="https://dogwalkers12.herokuapp.com/eventDetails/{{dogodek._id}}" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Deli z drugimi</a></div>
+    </div>
+    <!--
+    <div class="row">
+        <div class="embed-responsive embed-responsive-16by9 col-md-6">
+            <iframe src="https://maps.google.com/maps?q={{dogodek.koordinate.[0]}},{{dogodek.koordinate.[1]}}&z=15&output=embed" onload="getWeather({{dogodek.koordinate.[0]}},{{dogodek.koordinate.[1]}}, '{{dogodek.datum}}')" ></iframe>
+        </div>
+    </div>
+    -->
+    <script>
+        function doSomething(){
+            document.getElementById('id_confrmdiv').style.display="block"; //this is the replace of this line
+
+            document.getElementById('id_truebtn').onclick = function(){
+                //do your delete operation
+                alert('Rezervirano');
+            };
+
+            document.getElementById('id_falsebtn').onclick = function(){
+                alert('Ne rezerviraj')
+                window.location.href = '/eventDetails/{{dogodek._id}}'
+                return false;
+            };
+        }
+    </script>
+
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12" style="height: 500px">
+            <div class="iframe-rwd" style="height: 450px">
+                <iframe src="https://maps.google.com/maps?q={{dogodek.koordinate.[0]}},{{dogodek.koordinate.[1]}}&z=15&output=embed" width="100%" height="100%" frameborder="0" style="border:0"></iframe>
+
+            </div>
+
+        </div>
+    </div>
+</div>

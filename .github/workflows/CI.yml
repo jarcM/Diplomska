@@ -1,0 +1,22 @@
+name: Neprekinjena integracija
+
+on: # Kdaj se začne izvajanje delovnega toka?
+  push:
+    branches:
+      - test # Ob vsaki uveljavitvi na veji testno-okolje.
+    paths-ignore:
+      - "README.md" # Ignoriramo spremembe v dokumentaciji.
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          build: npm run build
+          start: npm start

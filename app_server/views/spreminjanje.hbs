@@ -1,0 +1,51 @@
+<form id="urediOglas" action="" method="post" role="form">
+    <div class="container">
+        <h2>Spreminjanje dogodka</h2>
+        <p>Spremenite podatke za želen dogodek</p>
+        <div class="form-group">
+            <label>Ime vašega oglasa:</label>
+            <input id="naslovOglasa" type="text" class="form-control" name="naslovOglasa">
+        </div>
+        <div class="form-group">
+            <label>Kje bo vaš dogodek potekal (kraj):</label>
+            <input id="kraj" type="text" class="form-control" name="kraj">
+        </div>
+        <div class="form-group">
+            <label>Kje bo vaš dogodek potekal (pošta)</label>
+            <input id="posta" type="text" class="form-control" name="posta">
+        </div>
+        <div class="form-group">
+            <label>Kje bo vaš dogodek potekal (ulica)</label>
+            <input id="ulica" type="text" class="form-control" name="ulica">
+        </div>
+        <div class="form-group">
+            <label>Trajanje</label>
+            <input id="trajanje" type="text" class="form-control" name="trajanje">
+        </div>
+        <div class="form-group">
+            <label>Kje bo vaš dogodek potekal (hisnaSt)</label>
+            <input id="hisnaSt" type="text" class="form-control" name="hisnaSt">
+        </div>
+        <div class="form-group">
+            <label>Kontakt</label>
+            <input id="kontakt" type="text" class="form-control" name="kontakt">
+        </div>
+
+        <div class="container">
+            <div class="row form-group">
+                <div class="col-xs-12-col-md-4 nejcRows">
+                    <label>Kdaj bo vaš dogodek potekal:</label>
+                    <input id="datum" type="datetime-local" class="form-control" name="datum">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Daljši in podrobnejši opis dogodka (vsaj 50 znakov):</label>
+            <textarea id="opisZahtev" class="form-control" rows="15" name="opisZahtev"></textarea>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary">Potrdi</button>
+            <button href="/myEvents" type="button" class="btn btn-light">Prekliči</button>
+        </div>
+    </div>
+</form>

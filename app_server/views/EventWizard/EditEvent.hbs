@@ -1,0 +1,75 @@
+<form id="editEventForm2" method="post" role="form" action="/dogodki/{{dogodek._id}}/posodobi">
+<div class="container">
+    {{#if sporocilo}}
+        <div class="alert alert-warning">{{sporocilo}}</div>
+    {{else}}
+        <h2>Dodajanje novega dogodka</h2>
+        <p>Vnesite podatke za želen dogodek</p>
+        <div class="form-group">
+            <label>Ime vašega oglasa:</label>
+            <input id="naslovOglasa" type="text" class="form-control" name="naslovOglasa" value="{{dogodek.naslovOglasa}}">
+        </div>
+        <div class="form-group">
+            <label>Kje bo vaš dogodek potekal (kraj):</label>
+            <input id="kraj" type="text" class="form-control" name="kraj" value="{{dogodek.kraj}}">
+        </div>
+        <div class="form-group">
+            <label>Kje bo vaš dogodek potekal (posta)</label>
+            <input id="posta" type="text" class="form-control" name="posta" value="{{dogodek.posta}}">
+        </div>
+        <div class="form-group">
+            <label>Kje bo vaš dogodek potekal (ulica)</label>
+            <input id="ulica" type="text" class="form-control" name="ulica" value="{{dogodek.ulica}}">
+        </div>
+        <div class="form-group">
+            <label>Trjanje</label>
+            <input id="trajanje" type="text" class="form-control" name="trajanje" value="{{dogodek.trajanje}}">
+        </div>
+        <div class="form-group">
+            <label>Kje bo vaš dogodek potekal (hisnaSt)</label>
+            <input id="hisnaSt" type="text" class="form-control" name="hisnaSt" value="{{dogodek.hisnaSt}}">
+        </div>
+        <div class="form-group">
+            <label>Kontakt</label>
+            <input id="kontakt" type="text" class="form-control" name="kontakt" value="{{dogodek.kontakt}}">
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12-col-md-6">
+                    <div class="form-group">
+                        <label>Izberi tip oglasa</label>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input id="jePovprasevanje" type="radio" class="form-check-input" name="jePovprasevanje" value="true" >Povpraševanje
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input id="jePovprasevanje" type="radio" class="form-check-input" name="jePovprasevanje" value="false" >Oglas
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row form-group">
+                <div class="col-xs-12-col-md-4 nejcRows">
+                    <label>Kdaj bo vaš dogodek potekal:</label>
+                    <input id="datum" type="datetime-local" class="form-control" name="datum">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Daljši in podrobnejši opis dogodka (vsaj 50 znakov):</label>
+            <textarea id="opisZahtev" class="form-control" rows="15" name="opisZahtev">{{dogodek.opisZahtev}}</textarea>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary">Potrdi</button>
+            <button href="/myEvents" type="button" class="btn btn-light">Prekliči</button>
+        </div>
+    </div>
+    {{/if}}
+</form>
