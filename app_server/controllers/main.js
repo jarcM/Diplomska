@@ -80,10 +80,10 @@ const eventDetails = (req, res) => {
             prikaziNapako(req, res, napaka);
         });
 };
-const showEventDetails = (req, res, dogodek) => {
+const showEventDetails = (req, res, program) => {
     res.render('EventDetails', {
         title: "Podrobnosti dogodka",
-        dogodek
+        program
     });
 };
 const profilAfterKomentar = (req, res) => {
@@ -202,10 +202,10 @@ const servicesList = (req, res) => {
         });
 };
 
-const showServicesList = (req, res, dogodki) => {
+const showServicesList = (req, res, programi) => {
     res.render('servicesList', {
         title: 'List oglasov',
-        dogodki
+        programi
     })
 }
 const getOceneSeznam = (req, res) => {
@@ -237,10 +237,10 @@ const oglasi = (req, res) => {
         });
 };
 
-const showOglasi = (req, res, dogodki) => {
+const showOglasi = (req, res, programi) => {
     res.render('oglasi', {
         title: 'Moji dogodki',
-        dogodki
+        programi
     })
 }
 

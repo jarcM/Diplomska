@@ -29,15 +29,15 @@ const axios = require('axios').create({
 var sessionID = ''
 
 const dogodkiSeznam = (req, res) => {
-    Dogodek
+    Program
         .find()
-        .exec((napaka, dogodek) => {
-            if (!dogodek) {
+        .exec((napaka, programek   ) => {
+            if (!programek) {
                 return res.status(404).json(napaka);
             } else if (napaka) {
                 return res.status(500).json(napaka);
             }
-            res.status(200).json(dogodek);
+            res.status(200).json(programek);
         });
 };
 
@@ -116,10 +116,10 @@ const oglasKreiraj = (req, res) => {
 };
 
 const dogodkiPreberiIzbrano = (req, res) => {
-    Dogodek
+    Program
         .findById(req.params.idDogodka)
-        .exec((napaka, dogodek) => {
-            if (!dogodek) {
+        .exec((napaka, programek) => {
+            if (!programek) {
                 return res.status(404).json({
                     "sporočilo":
                         "Ne najdem dogodka s podanim enoličnim identifikatorjem idDogodka."
@@ -127,7 +127,7 @@ const dogodkiPreberiIzbrano = (req, res) => {
             } else if (napaka) {
                 return res.status(500).json(napaka);
             }
-            res.status(200).json(dogodek);
+            res.status(200).json(programek);
         });
 };
 const uporabnikiPreberiIzbrano = (req, res) => {
