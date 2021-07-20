@@ -6,7 +6,7 @@ var apiParametri = {
     streznik: 'http://localhost:' + (process.env.PORT || 3000)
 };
 if (process.env.NODE_ENV === 'production') {
-    apiParametri.streznik = 'https://dogwalkers12.herokuapp.com/';
+    apiParametri.streznik = 'https://diplomskafitnessapp.herokuapp.com/';
 }
 
 var cmd = require('node-cmd');
@@ -16,7 +16,6 @@ const axios = require('axios').create({
     timeout: 5000
 });
 
-var mysql = require('mysql');
 
 const db = (req, res) => {
     res.render('db');
