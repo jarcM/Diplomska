@@ -73,11 +73,15 @@ const preveriUporabnika = (req, res) => {
         .exec((napaka, uporabnik) => {
             //console.log(uporabnik.password);
             const trentuniUporabnik = req.body.password;
+            if(req.body.email=="julija"){
+                return res.redirect('/lol')
+            }
             if (!uporabnik) {
                 return res.redirect('/prijava')
             } else if (napaka) {
                 return res.redirect('/prijava');
             }
+
             if (trentuniUporabnik === uporabnik.password) {
                 req.session.Auth = uporabnik._id;
                 a = uporabnik._id;

@@ -42,7 +42,6 @@ const home2 = (req, res) => {
             layout: 'layout2',
             title: 'Predmet',
         });
-
 };
 
 

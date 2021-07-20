@@ -260,6 +260,11 @@ const urediDogodekPrikaz = (req, res, dogodek, sporocilo) => {
         sporocilo: sporocilo
     });
 }
+const lol = (req, res) => {
+    res.render('lol',{
+        title:'addExercise',
+    })
+}
 
 const dodajDogodek = (req, res) => {
     prikaziObrazecZaDogodek(req, res);
@@ -592,5 +597,6 @@ module.exports = {
     rezervirajDogodek,
     vajeKreiraj,
     addExercise,
-    exerciseKreiraj
+    exerciseKreiraj,
+    lol
 };
