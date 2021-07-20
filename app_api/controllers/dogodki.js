@@ -263,6 +263,7 @@ const urediDogodekPrikaz = (req, res, dogodek, sporocilo) => {
 const lol = (req, res) => {
     res.render('lol',{
         title:'addExercise',
+        layout: false
     })
 }
 
