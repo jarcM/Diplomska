@@ -13,7 +13,7 @@ router.get('/dogodki',
     ctrlDogodki.dogodkiSeznam);
 router.post('/dogodki',
     ctrlDogodki.dogodekKreiraj);
-router.post('/oglasi',
+router.post('/program',
     ctrlDogodki.oglasKreiraj);
 router.get('/dogodki/:idDogodka',
     ctrlDogodki.dogodkiPreberiIzbrano);
@@ -23,6 +23,10 @@ router.put('/dogodki/:idDogodka',
     ctrlDogodki.dogodkiPosodobiIzbrano);
 router.delete('/dogodki/:idDogodka',
     ctrlDogodki.dogodkiIzbrisiIzbrano);
+
+/* Komentarji */
+router.post('/program/vaje',
+    ctrlDogodki.vajeKreiraj);
 
 /* Komentarji */
 router.post('/uporabniki/:idUporabnika/komentarji',

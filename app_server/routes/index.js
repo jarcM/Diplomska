@@ -18,8 +18,13 @@ router.get('/profilAfterKomentar/:idUporabnika', ctrlMain.profilAfterKomentar);
 
 router.get('/AddEvent', ctrlDogodki.dodajDogodek);
 router.get('/objava', ctrlDogodki.dodajOglas);
+router.get('/dodajVaje', ctrlDogodki.dodajVaje);
+router.get('/addExercise',ctrlDogodki.addExercise)
+router.post('/addExercise',ctrlDogodki.exerciseKreiraj)
+
 router.post("/AddEvent", ctrlDogodki.shraniDogodek);
 router.post("/objava", ctrlDogodki.shraniOglas);
+router.post("/dodajVaje", ctrlDogodki.vajeKreiraj);
 router.get('/EditEvent', ctrlMain.editEvent);
 router.get('/EditEvent/:idDogodka', ctrlDogodki.urediDogodek);
 router.get('/rezervirajDogodek/:idDogodka', ctrlDogodki.rezervirajDogodek);

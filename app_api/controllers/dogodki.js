@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 const Dogodek = mongoose.model('Dogodek');
+const Program = mongoose.model('Program');
+const Exercise = mongoose.model('Exercise');
+
 const Uporabnik = mongoose.model('Uporabnik');
 const Oglas = mongoose.model('Oglas');
 const NodeGeocoder = require('node-geocoder');
@@ -98,31 +101,20 @@ const dogodekKreiraj = (req, res) => {
     });
 };
 const oglasKreiraj = (req, res) => {
-    Dogodek.create({
-        koordinate: [
-            parseFloat(req.body.lat),
-            parseFloat(req.body.lng)
-        ],
-        naslovOglasa: req.body.naslovOglasa,
-        kraj: req.body.kraj,
-        posta: req.body.posta,
-        ulica: req.body.ulica,
-        hisnaSt: req.body.hisnaSt,
-        vreme: req.body.vreme,
-        kontakt: req.body.kontakt,
-        opisZahtev: req.body.opisZahtev,
-        kreatorID: sessionID,
-        jePovprasevanje: req.body.jePovprasevanje,
-        datum: req.body.datum,
-        trajanje: req.body.trajanje,
-    }, (napaka, dogodek) => {
+    console.log("do sm prslo1")
+    Program.create({
+        naslov: req.body.naslov,
+        visibility: req.body.visibility,
+        difficulty: req.body.difficulty,
+    }, (napaka, program) => {
         if (napaka) {
             res.status(400).json(napaka);
         } else {
-            res.status(201).json(dogodek);
+            res.status(201).json(program);
         }
     });
 };
+
 const dogodkiPreberiIzbrano = (req, res) => {
     Dogodek
         .findById(req.params.idDogodka)
@@ -281,6 +273,40 @@ const prikaziObrazecZaDogodek = (req, res) => {
 const dodajOglas = (req, res) => {
     prikaziObrazecZaOglas(req, res);
 }
+const dodajVaje = (req, res) => {
+    Program.findOne()
+        .sort(({_id:-1}))
+        .exec((napaka, program) => {
+            if (napaka) {
+                console.log(napaka);
+                res.status(400).json(napaka);
+            } else {
+                console.log(program.naslov)
+                Exercise.find()
+                    .sort(({_id:1}))
+                    .exec((napaka, exercise) => {
+                        if (napaka) {
+                            console.log(napaka);
+                            res.status(400).json(napaka);
+                        } else {
+                            Exercise.find()
+                                .sort(({_id:1}))
+                            res.render('dodajVaje',{
+                                title:'dodajVaje2',
+                                program,
+                                exercise
+
+                            })
+                        }
+                    });
+            }
+        });
+}
+const addExercise = (req, res) => {
+    res.render('addExercise',{
+        title:'addExercise',
+                })
+}
 
 const prikaziObrazecZaOglas = (req, res) => {
     res.render('objava', {
@@ -338,48 +364,74 @@ const shraniDogodek = async (req, res) => {
     });
 }
 const shraniOglas = async (req, res) => {
-    var lati = 0;
-    var longi = 0;
-    var cena = 0;
-    req.body.kraj = " " + req.body.kraj;
-    const geodata = await getgeo(req.body.ulica.concat(req.body.kraj)).catch(null);
-    console.log(req.body.kraj)
-    console.log(req.body.ulica)
-    lati = geodata[0].latitude;
-    console.log(lati)
-    longi = geodata[0].longitude;
-    axios
-        .get('api/seja')
-        .then((odgovor) => {
-            console.log(odgovor.data)
-            sessionID = odgovor.data;
-            axios({
+    console.log("do sm prslo2")
+    axios({
                 method: 'post',
-                url: '/api/oglasi',
+                url: '/api/program',
                 data: {
-                    lat: lati,
-                    lng: longi,
-                    naslovOglasa: req.body.naslovOglasa,
-                    kraj: req.body.kraj,
-                    posta: req.body.posta,
-                    ulica: req.body.ulica,
-                    vreme: req.body.vreme,
-                    hisnaSt: req.body.hisnaSt,
-                    kontakt: req.body.kontakt,
-                    opisZahtev: req.body.opisZahtev,
-                    kreatorID: sessionID,
-                    jePovprasevanje: req.body.jePovprasevanje,
-                    datum: req.body.datum,
-                    trajanje: req.body.trajanje,
+                    naslov: req.body.naslov,
+                    visibility: req.body.visibility,
+                    difficulty: req.body.difficulty,
                 }
             }).then(() => {
-                res.redirect('/servicesList');
+                res.redirect('/dodajVaje');
             }).catch((napaka) => {
                 console.log(napaka);
             });
-        })
 }
+const shraniVaje = async (req, res, program) => {
+    if (!program) {
+        res.status(404).json({"sporočilo": "Ne najdem dogodka."});
+    } else {
+        program.vaje.push({
+            naslov: req.body.naslov,
+            repsWeight:{
+                reps1:req.body.reps1,
+                reps2:req.body.reps2,
+                reps3:req.body.reps3,
+                reps4:req.body.reps4,
+                reps5:req.body.reps5,
+            },
+        });
+        program.save((napaka, program) => {
+            if (napaka) {
+                res.status(400).json(napaka);
+            } else {
+                res.redirect('/dodajVaje')
+            }
+        });
+    }
+}
+const exerciseKreiraj = (req, res) => {
+    console.log("do sm prslo1")
+    Exercise.create({
+        naslov: req.body.naslov,
+        mainBodyPart: req.body.bodyPart,
+    }, (napaka, workout) => {
+        if (napaka) {
+            res.status(400).json(napaka);
+        } else {
+            res.redirect('/addExercise')
+        }
 
+    });
+
+};
+const vajeKreiraj = (req, res) => {
+    Program.findOne()
+        .sort(({_id:-1}))
+        .select('vaje')
+        .exec((napaka, program) => {
+            if (napaka) {
+                console.log(napaka);
+                res.status(400).json(napaka);
+            } else {
+                console.log(program._id)
+                shraniVaje(req,res,program, req.body)
+            }
+        });
+
+};
 const odjavi = (req, res) => {
     if (!req.params.idDogodka) {
         return res.status(404).json("ne");
@@ -469,7 +521,6 @@ const izbrisi = (req, res) => {
             }
     }
 
-
 const posodobiDogodek = async (req, res) => {
     console.log("tuki2")
     if (!req.params.idDogodka) {
@@ -531,10 +582,15 @@ module.exports = {
     dodajDogodek,
     dodajOglas,
     shraniOglas,
+    shraniVaje,
     shraniDogodek,
     odjavi,
     prijavi,
+    dodajVaje,
     izbrisi,
     posodobiDogodek,
-    rezervirajDogodek
+    rezervirajDogodek,
+    vajeKreiraj,
+    addExercise,
+    exerciseKreiraj
 };

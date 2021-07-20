@@ -1,0 +1,62 @@
+<form id="dodajVaje" action="" method="post" role="form">
+    <div class="container">
+        <div class="container">
+            <div class="collection_text">Add exercise to program</div>
+        </div>
+        <div class="container bg-light2 flex-wrapper">
+            <div class="container">
+                <div class="racing_shoes">
+                    <label>Choose exercise:</label>
+                    <br>
+                    <select id="naslov" name="naslov">
+                        <p>asd</p>
+                        {{#each exercise as |exercise|}}
+                            <option value="{{exercise.naslov}}">{{exercise.naslov}}</option>
+                        {{/each}}
+                    </select>
+                    <br>
+                    <label>Choose Reps:</label>
+                    <div class="form-group2">
+                        <input id="reps1" type="number" class="form-control2" name="reps1" placeholder="0">
+                    </div>
+                    <div class="form-group2">
+                        <input id="reps2" type="text" class="form-control2" name="reps2" placeholder="0">
+                    </div>
+                    <div class="form-group2">
+                        <input id="reps3" type="text" class="form-control2" name="reps3" placeholder="0">
+                    </div>
+                    <div class="form-group2">
+                        <input id="reps4" type="text" class="form-control2" name="reps4" placeholder="0">
+                    </div>
+                    <div class="form-group2">
+                        <input id="reps5" type="text" class="form-control2" name="reps5" placeholder="0">
+                    </div>
+                    <div class="form-group" style="text-align:center">
+                        <button style="align-items: center"class="btn btn-primary" id="uredi">Add exercise</button>
+                        <button href="/myEvents" type="button" id="izbrisi" class="btn btn-light">Finish</button>
+                    </div>
+
+
+                    <table class="table table-striped" style="width: 50%;margin-left: 10%;margin-right: 40%; background-color: #a5c9a5">
+                        <tr style="color: white">
+                            <th>Exercise name</th>
+                            <th>Ocena</th>
+                        </tr>
+                        {{#each program.vaje as |vaje|}}
+                            <tr>
+                                <td>{{vaje.naslov}}</td>
+                                <td>{{vaje.repsWeight.[0].reps1}}</td>
+                                <td>{{vaje.repsWeight.[0].reps2}}</td>
+                                <td>{{vaje.repsWeight.[0].reps3}}</td>
+                                <td>{{vaje.repsWeight.[0].reps4}}</td>
+                                <td>{{vaje.repsWeight.[0].reps5}}</td>
+                            </tr>
+                        {{/each}}
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>

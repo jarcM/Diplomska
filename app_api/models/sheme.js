@@ -56,8 +56,44 @@ const oglasShema = new mongoose.Schema({
     datum: {type: Date},
     trajanje: {type: Number},
 });
+const repWeightShema = new mongoose.Schema({
+    reps1: {type: Number, default:0},
+    weight1: {type: Number, default:0},
+    reps2: {type: Number, default:0},
+    weight2: {type: Number, default:0},
+    reps3: {type: Number, default:0},
+    weight3: {type: Number, default:0},
+    reps4: {type: Number, default:0},
+    weight4: {type: Number, default:0},
+    reps5: {type: Number, default:0},
+    weight5: {type: Number, default:0},
+
+});
+const vajeShema = new mongoose.Schema({
+    naslov: {type: String},
+    placeholder:{type: Number},
+    repsWeight: [repWeightShema],
+});
+const programShema = new mongoose.Schema({
+    naslov: {type: String},
+    visibility:{type: String},
+    difficulty: {type: String, default:"Personal"},
+    vaje: [vajeShema],
+});
+const exerciseShema = new mongoose.Schema({
+    naslov: {type: String},
+    mainBodyPart:{type: String},
+});
+
 mongoose.model('Komentar', komentarjiShema, 'Komentar');
 mongoose.model('Dogodek', dogodekShema, 'Dogodek');
 mongoose.model("Uporabnik", uporabnikShema, "Uporabnik");
 mongoose.model("Lokacija", lokacijaShema, "Lokacija");
 mongoose.model("Oglas", oglasShema, "Oglas");
+mongoose.model("Program", programShema, "Program");
+mongoose.model("Vaje", vajeShema, "Vaje");
+mongoose.model("RepWeight", repWeightShema, "RepWeight");
+mongoose.model("Exercise", exerciseShema, "Exercise");
+
+
+

@@ -265,9 +265,7 @@ const addEvent = (req, res) => {
     res.render('EventWizard/AddEvent', {title: 'Dodajanaje novega dogodka'});
 };
 
-const dodajKomentar = (req, res) => {
-    profil(req, res);
-};
+
 
 const priljubljeniKreiraj = (req, res) => {
     const idUporabnika = req.params.idUporabnika;
@@ -333,6 +331,9 @@ const shraniPriljubljeni = (req, res) => {
     }).catch((napaka) => {
         prikaziNapako(req, res, napaka);
     });
+};
+const dodajKomentar = (req, res) => {
+    profil(req, res);
 };
 const shraniKomentar = (req, res) => {
     const idUporabnika = req.params.idUporabnika;
