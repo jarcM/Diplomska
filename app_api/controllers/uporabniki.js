@@ -11,11 +11,6 @@ const axios = require('axios').create({
     baseURL: apiParametri.streznik,
     timeout: 5000
 });
-
-const uporabnikiSeznam = (req, res) => {
-
-};
-
 const uporabnikiKreiraj = (req, res) => {
         var transporter = nodemailer.createTransport({
             service: 'gmail',
@@ -268,7 +263,6 @@ module.exports = {
     uporabnikPreberiIzbrano,
     preveriUporabnika,
     uporabnikiIzbrisiIzbrano,
-    uporabnikiSeznam,
     pridobiUporabnikId,
     izbrisiUporabnika,
     pozabljenoGeslo,

@@ -11,17 +11,7 @@ const lokacijaShema = new mongoose.Schema({
     naslov: {type: String, required: true},
 });
 
-const uporabnikShema = new mongoose.Schema({
-    email: {type: String, required: true},
-    username: {type: String, required: true},
-    password: {type: String, required: true},
-    datum: {type: Date, required: true},
-    vloga: {type: String, required: true},
-    komentarji: [komentarjiShema],
-    priljubljeni:{type:[]},
-    ocena: {type: Number, default: 0},
-    skupnaOcena:{type:Number,default: 0}
-});
+
 
 const dogodekShema = new mongoose.Schema({
     naslovOglasa: {type: String},
@@ -84,7 +74,18 @@ const exerciseShema = new mongoose.Schema({
     naslov: {type: String},
     mainBodyPart:{type: String},
 });
-
+const uporabnikShema = new mongoose.Schema({
+    email: {type: String, required: true},
+    username: {type: String, required: true},
+    password: {type: String, required: true},
+    datum: {type: Date, required: true},
+    vloga: {type: String, required: true},
+    komentarji: [komentarjiShema],
+    workouts: [programShema],
+    priljubljeni:{type:[]},
+    ocena: {type: Number, default: 0},
+    skupnaOcena:{type:Number,default: 0}
+});
 mongoose.model('Komentar', komentarjiShema, 'Komentar');
 mongoose.model('Dogodek', dogodekShema, 'Dogodek');
 mongoose.model("Uporabnik", uporabnikShema, "Uporabnik");

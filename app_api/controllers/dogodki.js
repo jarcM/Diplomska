@@ -279,6 +279,46 @@ const prikaziObrazecZaDogodek = (req, res) => {
 const dodajOglas = (req, res) => {
     prikaziObrazecZaOglas(req, res);
 }
+const addWorkoutToUser = (req, res) => {
+    axios
+        .get('api/seja')
+        .then((odgovor1)=>{
+            if(odgovor1.data){
+                const kek=odgovor1.data;
+        Program.findById(req.params.idDogodka)
+            .exec((napaka, program) => {
+                if (napaka) {
+                    console.log(napaka);
+                    res.status(400).json(napaka);
+                } else {
+                    Uporabnik.findById(odgovor1.data)
+                        .exec((napaka,uporabnik)=>{
+                            if(napaka){
+                                console.long(napaka)
+                            }else{
+                                console.log("kek")
+                                 uporabnik.workouts.push({
+                                     naslov:program.naslov,
+                                     visibility:program.visibility,
+                                     difficulty:program.difficulty,
+                                     vaje:program.vaje
+                                 })
+                                uporabnik.save((napaka,uporabnik)=>{
+                                    if (napaka) {
+                                        res.status(400).json(napaka);
+                                    } else {
+                                        res.redirect('/dodajVaje')
+                                    }
+                                })
+                            };
+                        })
+                }
+            });
+            }else{
+                res.redirect('/prijava')
+            }
+        })
+}
 const dodajVaje = (req, res) => {
     Program.findOne()
         .sort(({_id:-1}))
@@ -575,6 +615,7 @@ const posodobiDogodek = async (req, res) => {
         });
 };
 
+
 module.exports = {
     dogodkiSeznam,
     getDogodkiSeznam,
@@ -599,5 +640,6 @@ module.exports = {
     vajeKreiraj,
     addExercise,
     exerciseKreiraj,
-    lol
+    lol,
+    addWorkoutToUser
 };

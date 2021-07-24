@@ -165,13 +165,6 @@ const showEventRating = (req, res, eventRating) => {
 };
 
 
-const eventArchiveShow = (req, res, dogodki) => {
-    res.render('EventArchive', {
-        title: 'Arhiv dogodkov',
-        dogodki
-    });
-};
-
 const myEvents = (req, res) => {
     axios
         .get('/api/dogodki/')
