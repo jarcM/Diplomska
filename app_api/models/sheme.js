@@ -84,7 +84,8 @@ const uporabnikShema = new mongoose.Schema({
     workouts: [programShema],
     priljubljeni:{type:[]},
     ocena: {type: Number, default: 0},
-    skupnaOcena:{type:Number,default: 0}
+    skupnaOcena:{type:Number,default: 0},
+    totalKgLifted:{type:Number}
 });
 mongoose.model('Komentar', komentarjiShema, 'Komentar');
 mongoose.model('Dogodek', dogodekShema, 'Dogodek');

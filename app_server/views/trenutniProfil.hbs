@@ -11,11 +11,11 @@
 
             <table class="table table-striped" style="width: 50%;margin-left: 40%;margin-right: 25%; background-color: #a5c9a5; cursor: pointer">
             <tr>
-                <th style="color: white">Priljubljeni oglasi</th>
+                <th style="color: white">Previous workouts</th>
             </tr>
-            {{#each uporabnik.priljubljeni as |priljubljeni|}}
+            {{#each uporabnik.workouts as |workouts|}}
                 <tr>
-                    <td onclick="window.location = '/eventDetails/{{priljubljeni.priljubljeni}}'" style="text-align: center">{{priljubljeni.ime}}</td>
+                    <td onclick="window.location = '/previousWorkouts/{{@index}}'" style="text-align: center">{{workouts.naslov}}</td>
                 </tr>
             {{/each}}
         </table>

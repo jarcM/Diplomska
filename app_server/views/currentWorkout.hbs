@@ -1,0 +1,30 @@
+<form id="dodajWorkout" action="" method="post" role="form">
+    <div class="container">
+        <div class="container">
+            <div class="collection_text">{{vaje.naslov}}</div>
+        </div>
+        <table class="table table-hover table-bordered table-striped">
+                <tr>
+                    <td>Reps</td>
+                    <td><input id="reps1" type="number" class="form-control2" name="reps1" placeholder="0" value={{vaje.repsWeight.[0].reps1}}></td>
+                    <td><input id="reps2" type="number" class="form-control2" name="reps2" placeholder="0" value={{vaje.repsWeight.[0].reps2}}></td>
+                    <td><input id="reps3" type="number" class="form-control2" name="reps3" placeholder="0" value={{vaje.repsWeight.[0].reps3}}></td>
+                    <td><input id="reps4" type="number" class="form-control2" name="reps4" placeholder="0" value={{vaje.repsWeight.[0].reps4}}></td>
+                    <td><input id="reps5" type="number" class="form-control2" name="reps5" placeholder="0" value={{vaje.repsWeight.[0].reps5}}></td>
+                </tr>
+            <tr>
+                <td>Weight</td>
+                <td><input id="weight1" type="number" class="form-control2" placeholder="0" name="weight1" value={{vaje.repsWeight.[0].weight1}}></td>
+                <td><input id="weight2" type="number" class="form-control2" placeholder="0" name="weight2" value={{vaje.repsWeight.[0].weight2}}></td>
+                <td><input id="weight3" type="number" class="form-control2" placeholder="0" name="weight3" value={{vaje.repsWeight.[0].weight3}}></td>
+                <td><input id="weight4" type="number" class="form-control2" placeholder="0" name="weight4" value={{vaje.repsWeight.[0].weight4}}></td>
+                <td><input id="weight5" type="number" class="form-control2" placeholder="0" name="weight5" value={{vaje.repsWeight.[0].weight5}}></td>
+            </tr>
+        </table>
+        <div class="form-group" style="text-align:center">
+            <button style="align-items: center"class="btn btn-primary" id="uredi">Next exercise</button>
+        </div>
+    </div>
+</form>
+
+

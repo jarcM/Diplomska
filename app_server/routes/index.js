@@ -15,6 +15,11 @@ router.get('/eventRating/:idDogodka', ctrlMain.eventRating);
 router.get('/profil/:idUporabnika', ctrlMain.profil);
 router.get('/profilAfterKomentar/:idUporabnika', ctrlMain.profilAfterKomentar);
 router.post('/eventDetails/:idDogodka',ctrlDogodki.addWorkoutToUser);
+router.get('/currentWorkout/:counter',ctrlDogodki.currentWorkout);
+router.post('/currentWorkout/:counter',ctrlDogodki.currentWorkout2);
+router.get('/previousWorkouts/:idDogodka', ctrlDogodki.previousWorkouts);
+
+
 
 router.get('/AddEvent', ctrlDogodki.dodajDogodek);
 router.get('/objava', ctrlDogodki.dodajOglas);

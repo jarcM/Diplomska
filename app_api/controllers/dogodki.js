@@ -130,6 +130,54 @@ const dogodkiPreberiIzbrano = (req, res) => {
             res.status(200).json(programek);
         });
 };
+const previousWorkouts = (req, res) => {
+    axios
+        .get('api/seja')
+        .then((odgovor1)=>{
+            if(odgovor1.data){
+                const kek=odgovor1.data;
+                Uporabnik.findById(odgovor1.data)
+                    .exec((napaka,uporabnik)=>{
+                        if(napaka){
+                            console.long(napaka)
+                        }else{
+                            console.log(uporabnik.workouts[req.params.idDogodka].vaje.length)
+                            console.log("kek")
+                            var stevec=0;
+                            for (let i=0;i<uporabnik.workouts[req.params.idDogodka].vaje.length;i++){
+                                console.log(stevec)
+                                if(uporabnik.workouts[req.params.idDogodka].vaje[i].repsWeight[0].reps1!=null) {
+                                    stevec = stevec + parseInt(uporabnik.workouts[req.params.idDogodka].vaje[i].repsWeight[0].reps1) *
+                                        parseInt(uporabnik.workouts[req.params.idDogodka].vaje[i].repsWeight[0].weight1);
+                                }
+                                if(uporabnik.workouts[req.params.idDogodka].vaje[i].repsWeight[0].reps2!=null) {
+                                    stevec = stevec + parseInt(uporabnik.workouts[req.params.idDogodka].vaje[i].repsWeight[0].reps2) *
+                                        parseInt(uporabnik.workouts[req.params.idDogodka].vaje[i].repsWeight[0].weight2);
+                                }
+                                if(uporabnik.workouts[req.params.idDogodka].vaje[i].repsWeight[0].reps3!=null) {
+                                    stevec = stevec + parseInt(uporabnik.workouts[req.params.idDogodka].vaje[i].repsWeight[0].reps3) *
+                                        parseInt(uporabnik.workouts[req.params.idDogodka].vaje[i].repsWeight[0].weight3);
+                                }
+                                if(uporabnik.workouts[req.params.idDogodka].vaje[i].repsWeight[0].reps4!=null) {
+                                    stevec = stevec + parseInt(uporabnik.workouts[req.params.idDogodka].vaje[i].repsWeight[0].reps4) *
+                                        parseInt(uporabnik.workouts[req.params.idDogodka].vaje[i].repsWeight[0].weight4);
+                                }
+                                if(uporabnik.workouts[req.params.idDogodka].vaje[i].repsWeight[0].reps5!=null) {
+                                    stevec = stevec + parseInt(uporabnik.workouts[req.params.idDogodka].vaje[i].repsWeight[0].reps5) *
+                                        parseInt(uporabnik.workouts[req.params.idDogodka].vaje[i].repsWeight[0].weight5);
+                                }
+                            }
+                            res.render('previousWorkouts',{
+                                program:uporabnik.workouts[req.params.idDogodka],
+                                counter:stevec
+                            })
+                        }
+                    });
+            }else{
+                res.redirect('/prijava')
+            }
+        })
+};
 const uporabnikiPreberiIzbrano = (req, res) => {
     Uporabnik
         .findById(req.params.idUporabnika)
@@ -280,6 +328,7 @@ const dodajOglas = (req, res) => {
     prikaziObrazecZaOglas(req, res);
 }
 const addWorkoutToUser = (req, res) => {
+    const counter=0;
     axios
         .get('api/seja')
         .then((odgovor1)=>{
@@ -307,13 +356,78 @@ const addWorkoutToUser = (req, res) => {
                                     if (napaka) {
                                         res.status(400).json(napaka);
                                     } else {
-                                        res.redirect('/dodajVaje')
+                                        console.log("kekss")
+                                        res.redirect('/currentWorkout/'+counter)
                                     }
                                 })
                             };
                         })
                 }
             });
+            }else{
+                res.redirect('/prijava')
+            }
+        })
+}
+const currentWorkout = (req, res) => {
+    axios
+        .get('api/seja')
+        .then((odgovor1)=>{
+            if(odgovor1.data){
+                const kek=odgovor1.data;
+                Uporabnik.findById(odgovor1.data)
+                    .exec((napaka,uporabnik)=>{
+                        if(napaka){
+                            console.long(napaka)
+                        }else{
+                            var stevec=uporabnik.workouts.length
+                            console.log(stevec)
+                            res.render('currentWorkout',{
+                                program:uporabnik.workouts[stevec-1],
+                                counter:req.params.counter,
+                                vaje:uporabnik.workouts[stevec-1].vaje[req.params.counter]
+                            })
+                        };
+                    })
+            }else{
+                res.redirect('/prijava')
+            }
+        })
+}
+const currentWorkout2 = (req, res) => {
+    axios
+        .get('api/seja')
+        .then((odgovor1)=>{
+            if(odgovor1.data){
+                const kek=odgovor1.data;
+                Uporabnik.findById(odgovor1.data)
+                    .exec((napaka,uporabnik)=>{
+                        if(napaka){
+                            console.long(napaka)
+                        }else{
+                            var stevec=uporabnik.workouts.length
+                            console.log(stevec)
+                            var counter=parseInt(req.params.counter) +1
+                            console.log(uporabnik.workouts[stevec-1].vaje[req.params.counter].repsWeight[0].reps1)
+                            uporabnik.workouts[stevec-1].vaje[req.params.counter].repsWeight[0].reps1=req.body.reps1,
+                            uporabnik.workouts[stevec-1].vaje[req.params.counter].repsWeight[0].reps2=req.body.reps2,
+                            uporabnik.workouts[stevec-1].vaje[req.params.counter].repsWeight[0].reps3=req.body.reps3,
+                            uporabnik.workouts[stevec-1].vaje[req.params.counter].repsWeight[0].reps4=req.body.reps4,
+                            uporabnik.workouts[stevec-1].vaje[req.params.counter].repsWeight[0].reps5=req.body.reps5,
+                            uporabnik.workouts[stevec-1].vaje[req.params.counter].repsWeight[0].weight1=req.body.weight1,
+                            uporabnik.workouts[stevec-1].vaje[req.params.counter].repsWeight[0].weight2=req.body.weight2,
+                            uporabnik.workouts[stevec-1].vaje[req.params.counter].repsWeight[0].weight3=req.body.weight3,
+                            uporabnik.workouts[stevec-1].vaje[req.params.counter].repsWeight[0].weight4=req.body.weight4,
+                            uporabnik.workouts[stevec-1].vaje[req.params.counter].repsWeight[0].weight5=req.body.weight5
+                            uporabnik.save((napaka, uporabnik) => {
+                                if (napaka) {
+                                    res.status(404).json(napaka);
+                                } else {
+                                    res.redirect('/currentWorkout/'+counter)
+                                }
+                            });
+                        };
+                    })
             }else{
                 res.redirect('/prijava')
             }
@@ -348,6 +462,8 @@ const dodajVaje = (req, res) => {
             }
         });
 }
+
+
 const addExercise = (req, res) => {
     res.render('addExercise',{
         title:'addExercise',
@@ -641,5 +757,9 @@ module.exports = {
     addExercise,
     exerciseKreiraj,
     lol,
-    addWorkoutToUser
+    addWorkoutToUser,
+    currentWorkout,
+    currentWorkout2,
+    previousWorkouts
+
 };

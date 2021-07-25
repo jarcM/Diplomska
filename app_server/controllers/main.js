@@ -78,12 +78,14 @@ const eventDetails = (req, res) => {
             prikaziNapako(req, res, napaka);
         });
 };
+
 const showEventDetails = (req, res, program) => {
     res.render('EventDetails', {
         title: "Podrobnosti dogodka",
         program
     });
 };
+
 const profilAfterKomentar = (req, res) => {
     axios
         .get('/api/uporabniki/' + req.params.idUporabnika)
@@ -126,7 +128,6 @@ const showTrenutniProfil = (req, res, uporabnik) => {
     res.render('trenutniProfil', {
         title: "Profil",
         uporabnik,
-        ocena: uporabnik.ocena
     });
 };
 const showProfil = (req, res, uporabnik) => {
@@ -385,5 +386,5 @@ module.exports = {
     profilAfterKomentar,
     dodajPriljublene,
     priljubljeniKreiraj,
-    shraniPriljubljeni
+    shraniPriljubljeni,
 };
