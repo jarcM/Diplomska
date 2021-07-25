@@ -66,64 +66,6 @@ const preveriUporabnika = (req, res) => {
         });
 }
 
-const pozabljenoGeslo = (req, res) => {
-    console.log(req.body.email)
-    Uporabnik
-        .findOne({email: req.body.email})
-        .select('password')
-        .exec((napaka, uporabnik) => {
-            //console.log(uporabnik.password);
-            const trenutniUporabnik = req.body.password;
-            if (!uporabnik) {
-                return res.redirect('/pozabljenoGeslo')
-            } else if (napaka) {
-                return res.status(500).json(napaka);
-            }
-
-            var transporter = nodemailer.createTransport({
-                service: 'gmail',
-                auth: {
-                    user: 'dogwalkerstpo@gmail.com',
-                    pass: 'Dogwalkers12'
-                }
-            });
-            var mailOptions = {
-                from: 'dogwalkerstpo@gmail.com',
-                to: req.body.email,
-                subject: 'Koda',
-                text: "Kliknite na link, da nastavite novo geslo" + "   https://dogwalkers12.herokuapp.com/pozabljenoGeslo2/" + uporabnik._id.toString()
-            };
-            transporter.sendMail(mailOptions, function (error, info) {
-                if (error) {
-                    console.log(error);
-                } else {
-                    console.log('Email sent: ' + info.response);
-                }
-            });
-            res.redirect('/prijava')
-        });
-    //res.redirect('/prijava')
-}
-
-const posodobiGeslo = async (req, res) => {
-    Uporabnik
-        .findById(req.params.idUporabnika)
-        .exec((napaka, uporabnik) => {
-            if (!uporabnik) {
-                return res.status(404).json({"sporočilo": "Ne najdem uporabnika."});
-            } else if (napaka) {
-                return res.status(500).json(napaka);
-            }
-            uporabnik.password=req.body.password;
-            uporabnik.save((napaka, uporabnik) => {
-                if (napaka) {
-                    res.status(404).json(napaka);
-                } else {
-                    res.redirect('/prijava');
-                }
-            });
-        });
-};
 const pridobiUporabnikId = (req, res) => {
     if (req.params.email) {
         Uporabnik
@@ -242,8 +184,6 @@ module.exports = {
     uporabnikiIzbrisiIzbrano,
     pridobiUporabnikId,
     izbrisiUporabnika,
-    pozabljenoGeslo,
-    posodobiGeslo,
     vrniSejo,
     oceneSeznam
 

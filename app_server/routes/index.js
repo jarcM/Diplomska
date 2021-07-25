@@ -39,10 +39,7 @@ router.get('/rezervirajDogodek/:idDogodka', ctrlDogodki.rezervirajDogodek);
 router.get('/myEvents', ctrlMain.myEvents);
 router.get('/servicesList', ctrlMain.servicesList)
 router.get('/prijava', ctrlLogin.prijava);
-router.post('/pozabljenOgeslo', ctrlUporabniki.pozabljenoGeslo);
 router.get('/registracija', ctrlLogin.registracija);
-router.get('/pozabljenOgeslo', ctrlLogin.pozabljenogeslo);
-router.get('/pozabljenoGeslo2/:idUporabnika', ctrlLogin.pozabljenogeslo2);
 router.get('/splosnipogoji', ctrlLogin.splosnipogoji);
 router.post('/registracija', ctrlUporabniki.shraniUporabnika);
 router.post('/prijava', ctrlUporabniki.preveriUporabnika);
@@ -64,7 +61,6 @@ router.post('/dogodki/:idDogodka/prijavi', ctrlDogodki.prijavi);
 router.post('/dogodki/:idDogodka/odjavi', ctrlDogodki.odjavi);
 router.post('/dogodki/:idDogodka/izbrisi', ctrlDogodki.izbrisi);
 router.post('/dogodki/:idDogodka/posodobi', ctrlDogodki.posodobiDogodek);
-router.post('/uporabniki/posodobi/:idUporabnika', ctrlUporabniki.posodobiGeslo);
 
 
 module.exports = router;

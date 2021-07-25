@@ -5,15 +5,7 @@ var prijava = (req, res) => {
 var registracija = (req, res) => {
     res.render("registracija", {layout: 'layoutlogin',title:"Registracija"});
 };
-var pozabljenogeslo = (req, res) => {
-    res.render("pozabljenogeslo", {layout: 'layoutlogin'});
-};
-var pozabljenogeslo2 = (req, res) => {
-    res.render("pozabljenoGeslo2", {
-        layout: 'layoutlogin',
-        idKoda:req.params.idUporabnika
-    } );
-};
+
 var splosnipogoji = (req, res) => {
     res.render('index', {
         layout: 'layoutlogin',
@@ -25,7 +17,5 @@ var splosnipogoji = (req, res) => {
 module.exports = {
     prijava,
     registracija,
-    pozabljenogeslo,
     splosnipogoji,
-    pozabljenogeslo2
 };
