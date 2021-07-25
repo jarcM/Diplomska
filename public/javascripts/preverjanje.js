@@ -31,11 +31,7 @@ function SprotnoPreverjanjeUpIme(){
 
 function SprotnoPreverjanjeGeslo(){
     let str = document.getElementById('password').value;
-    if (str.match(/[a-z]/g) && str.match(
-        /[A-Z]/g) && str.match(
-        /[0-9]/g) && str.match(
-        /[^a-zA-Z\d]/g) && str.length >= 8 && str.length <= 30
-        && str.match(/[!@#$%^&*(),.?":{}|<>]/g)){
+    if (str.match(/^[0-9a-zA-Z]+$/g) && str.length >= 4 && str.length <= 30){
         document.getElementById("checkPassword").style.display = "inline";
         document.getElementById("xPassword").style.display = "none";
         document.getElementById("password").style.border= "2px solid #76d600";

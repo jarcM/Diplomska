@@ -4,7 +4,6 @@ var ctrlLogin = require("../controllers/login");
 const ctrlMain = require('../controllers/main');
 const ctrlDogodki = require('../../app_api/controllers/dogodki');
 const ctrlUporabniki = require('../../app_api/controllers/uporabniki');
-const ctrlKomentarji = require('../../app_api/controllers/komentarji');
 const ctrlMail = require('../controllers/mail')
 
 router.get('/db', ctrlMain.db);
@@ -13,7 +12,6 @@ router.get('/db/brisi', ctrlMain.brisi);
 router.get('/eventDetails/:idDogodka', ctrlMain.eventDetails);
 router.get('/eventRating/:idDogodka', ctrlMain.eventRating);
 router.get('/profil/:idUporabnika', ctrlMain.profil);
-router.get('/profilAfterKomentar/:idUporabnika', ctrlMain.profilAfterKomentar);
 router.post('/eventDetails/:idDogodka',ctrlDogodki.addWorkoutToUser);
 router.get('/currentWorkout/:counter',ctrlDogodki.currentWorkout);
 router.post('/currentWorkout/:counter',ctrlDogodki.currentWorkout2);
@@ -48,7 +46,6 @@ router.get('/pozabljenoGeslo2/:idUporabnika', ctrlLogin.pozabljenogeslo2);
 router.get('/splosnipogoji', ctrlLogin.splosnipogoji);
 router.post('/registracija', ctrlUporabniki.shraniUporabnika);
 router.post('/prijava', ctrlUporabniki.preveriUporabnika);
-router.get('/top10', ctrlMain.getOceneSeznam)
 router.get('/profil', ctrlMain.profil);
 router.get('/trenutniProfil', ctrlMain.trenutniProfil);
 router.get('/servicesList', ctrlMain.servicesList);
@@ -63,7 +60,6 @@ router.get('/', ctrlMain.home2)
 
 router.post('/uporabniki/priljubljeni/:idDogodka', ctrlMain.shraniPriljubljeni);
 
-router.post('/uporabniki/:idUporabnika/komentar/nov', ctrlMain.shraniKomentar);
 router.post('/dogodki/:idDogodka/prijavi', ctrlDogodki.prijavi);
 router.post('/dogodki/:idDogodka/odjavi', ctrlDogodki.odjavi);
 router.post('/dogodki/:idDogodka/izbrisi', ctrlDogodki.izbrisi);
@@ -74,10 +70,5 @@ router.post('/uporabniki/posodobi/:idUporabnika', ctrlUporabniki.posodobiGeslo);
 module.exports = router;
 router.get('/dogodki/:idDogodka', ctrlMain.eventRating);
 
-
-router
-    .route('/uporabniki/:idUporabnika/komentar/nov')
-    .get(ctrlMain.dodajKomentar)
-    .post(ctrlMain.shraniKomentar);
 
 module.exports = router;

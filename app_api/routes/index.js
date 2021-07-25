@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const ctrlDogodki = require('../controllers/dogodki');
-const ctrlKomentarji = require('../controllers/komentarji');
 const ctrlUporabniki = require('../controllers/uporabniki');
 const ctrlLokacije = require('../controllers/lokacije');
 const ctrlMain=require('../../app_server/controllers/main')
@@ -29,10 +28,6 @@ router.post('/program/vaje',
     ctrlDogodki.vajeKreiraj);
 
 /* Komentarji */
-router.post('/uporabniki/:idUporabnika/komentarji',
-    ctrlKomentarji.komentarjiKreiraj);
-router.post('/uporabniki/:idUporabnika/priljubljeni/:idDogodka',
-    ctrlMain.priljubljeniKreiraj);
 
 /* Uporabniki */
 router.get('/seja', ctrlUporabniki.vrniSejo);

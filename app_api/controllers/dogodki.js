@@ -382,6 +382,9 @@ const currentWorkout = (req, res) => {
                         }else{
                             var stevec=uporabnik.workouts.length
                             console.log(stevec)
+                            if(parseInt(req.params.counter)==uporabnik.workouts[stevec-1].vaje.length-1){
+                                res.redirect('/trenutniProfil')
+                            }
                             res.render('currentWorkout',{
                                 program:uporabnik.workouts[stevec-1],
                                 counter:req.params.counter,

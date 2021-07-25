@@ -28,47 +28,4 @@
             <td ><img src="/{{isValid uporabnik.skupnaOcena}}" alt="" style="height:100px; width: 100px"></td>
         </tr>
     </table>
-    <form method="POST" action="/uporabniki/{{uporabnik._id}}/komentar/nov">
-        <div class="container" style="width: 50%;margin-left: 25%;margin-right: 25%">
-            <div class="row">
-                <div class="col">
-                </div>
-                <div class="col-9">
-                    <div class="form-group">
-                        <label>Komentar:</label>
-                        <textarea id="tekst" class="form-control" name="tekst"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Ocenite svoje izkušnje</label>
-                        <select name="ocena" id="ocena">
-                            <option>5</option>
-                            <option>4</option>
-                            <option>3</option>
-                            <option>2</option>
-                            <option>1</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" id="uredi" class="btn btn-primary">Pošlji</button>
-                    </div>
-                </div>
-                <div class="col">
-
-                </div>
-            </div>
-
-        </div>
-    </form>
-    <table class="table table-hover" style="width: 50%;margin-left: 25%;margin-right: 25%; background-color: #a5c9a5">
-        <tr>
-            <th>Komentar</th>
-            <th>Ocena</th>
-        </tr>
-        {{#each uporabnik.komentarji as |komentar|}}
-            <tr>
-                <td>{{komentar.vsebina}}</td>
-                <td>{{komentar.ocena}}</td>
-            </tr>
-        {{/each}}
-    </table>
 </div>

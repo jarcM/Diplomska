@@ -12,34 +12,11 @@ const axios = require('axios').create({
     timeout: 5000
 });
 const uporabnikiKreiraj = (req, res) => {
-        var transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: 'dogwalkerstpo@gmail.com',
-                pass: 'Dogwalkers12'
-            }
-        });
-        var mailOptions = {
-            from: 'dogwalkerstpo@gmail.com',
-            to: req.body.email,
-            subject: 'Registrirani ste bili na dogwalkers12',
-            text: 'Korona je nateg'
-        };
-        transporter.sendMail(mailOptions, function (error, info) {
-            if (error) {
-                console.log(error);
-            } else {
-                console.log('Email sent: ' + info.response);
-            }
-        });
-
     Uporabnik.create({
         email: req.body.email,
         username: req.body.username,
         password: req.body.password,
         datum: req.body.datum,
-        vloga: req.body.vloga,
-
     }, (napaka, uporabniki) => {
         if (napaka) {
             res.status(400).json(napaka);

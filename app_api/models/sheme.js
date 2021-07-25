@@ -1,9 +1,5 @@
 const mongoose = require('mongoose');
-const komentarjiShema = new mongoose.Schema({
-    ime: String,
-    ocena: Number,
-    vsebina: String
-});
+
 
 
 const lokacijaShema = new mongoose.Schema({
@@ -78,16 +74,14 @@ const uporabnikShema = new mongoose.Schema({
     email: {type: String, required: true},
     username: {type: String, required: true},
     password: {type: String, required: true},
-    datum: {type: Date, required: true},
-    vloga: {type: String, required: true},
-    komentarji: [komentarjiShema],
+    datum: {type: Date},
+    vloga: {type: String},
     workouts: [programShema],
     priljubljeni:{type:[]},
     ocena: {type: Number, default: 0},
     skupnaOcena:{type:Number,default: 0},
     totalKgLifted:{type:Number}
 });
-mongoose.model('Komentar', komentarjiShema, 'Komentar');
 mongoose.model('Dogodek', dogodekShema, 'Dogodek');
 mongoose.model("Uporabnik", uporabnikShema, "Uporabnik");
 mongoose.model("Lokacija", lokacijaShema, "Lokacija");

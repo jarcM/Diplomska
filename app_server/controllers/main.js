@@ -86,23 +86,7 @@ const showEventDetails = (req, res, program) => {
     });
 };
 
-const profilAfterKomentar = (req, res) => {
-    axios
-        .get('/api/uporabniki/' + req.params.idUporabnika)
-        .then((odgovor) => {
-            showProfilAfterKomentar(req, res, odgovor.data);
-        })
-        .catch((napaka) => {
-            prikaziNapako(req, res, napaka);
-        });
-};
-const showProfilAfterKomentar = (req, res, uporabnik) => {
-    res.render('profilAfterKomentar', {
-        title: "Profil",
-        uporabnik,
-        ocena: uporabnik.ocena
-    });
-};
+
 const profil = (req, res) => {
     axios
         .get('/api/uporabniki/' + req.params.idUporabnika)
@@ -209,13 +193,6 @@ const getOceneSeznam = (req, res) => {
         .catch(() => {
             prikaziNapako(req, res, [], "Napaka API-ja pri iskanju dogodka.");
         });
-}
-const top10 = (req, res, uporabniki, sporocilo) => {
-    res.render('top10', {
-        title: 'Top10',
-        uporabniki,
-        sporocilo: sporocilo
-    });
 }
 
 const oglasi = (req, res) => {
@@ -324,24 +301,8 @@ const shraniPriljubljeni = (req, res) => {
         prikaziNapako(req, res, napaka);
     });
 };
-const dodajKomentar = (req, res) => {
-    profil(req, res);
-};
-const shraniKomentar = (req, res) => {
-    const idUporabnika = req.params.idUporabnika;
-    axios({
-        method: 'post',
-        url: '/api/uporabniki/' + idUporabnika + '/komentarji',
-        data: {
-            vsebina: req.body.tekst,
-            ocena: req.body.ocena
-        }
-    }).then(() => {
-        res.redirect('/profilAfterKomentar/' + idUporabnika);
-    }).catch((napaka) => {
-        prikaziNapako(req, res, napaka);
-    });
-};
+
+
 
 const prikaziNapako = (req, res, napaka) => {
     let naslov = "Nekaj je šlo narobe!";
@@ -372,7 +333,6 @@ module.exports = {
     profil,
     db,
     oglasi,
-    top10,
     home,
     home2,
     eventDetails,
@@ -380,10 +340,7 @@ module.exports = {
     myEvents,
     editEvent,
     addEvent,
-    shraniKomentar,
-    dodajKomentar,
     trenutniProfil,
-    profilAfterKomentar,
     dodajPriljublene,
     priljubljeniKreiraj,
     shraniPriljubljeni,
