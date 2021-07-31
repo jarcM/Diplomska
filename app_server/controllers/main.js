@@ -307,31 +307,7 @@ const prikaziNapako = (req, res, napaka) => {
         vsebina: vsebina
     });
 };
-const getAddWeight = (req, res) => {
-    console.log(req.session.Auth)
-    axios
-        .get('/api/uporabniki/' + req.session.Auth)
-        .then((odgovor) => {
-            showAddWeight(req, res, odgovor.data);
-        })
-        .catch((napaka) => {
-            res.redirect('/')
-        });
-};
-const showAddWeight = (req, res, uporabnik1) => {
-    console.log("prslodosm")
-    Uporabnik.findById(uporabnik1)
-        .exec((napaka,uporabnik)=>{
-            if(napaka){
-                console.long(napaka)
-            }else{
-                res.render('addWeight', {
-                    title: 'Add weight',
-                    weight:uporabnik.weight
-                });
-            };
-        })
-};
+
 
 const trenutniProfil = (req, res) => {
     axios
@@ -380,6 +356,5 @@ module.exports = {
     dodajPriljublene,
     priljubljeniKreiraj,
     shraniPriljubljeni,
-    getAddWeight
 
 };

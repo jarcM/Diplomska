@@ -46,7 +46,7 @@ router.get('/splosnipogoji', ctrlLogin.splosnipogoji);
 router.post('/registracija', ctrlUporabniki.shraniUporabnika);
 router.post('/prijava', ctrlUporabniki.preveriUporabnika);
 router.get('/profil', ctrlMain.profil);
-router.get('/addWeight', ctrlMain.getAddWeight);
+router.get('/addWeight', ctrlDogodki.getAddWeight);
 router.get('/trenutniProfil', ctrlMain.trenutniProfil);
 router.get('/servicesList', ctrlMain.servicesList);
 router.get('/oglasi', ctrlMain.oglasi);
