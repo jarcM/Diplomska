@@ -118,7 +118,7 @@ const addWeight = (req, res) => {
     axios
         .get('api/seja')
         .then((odgovor1)=>{
-
+            if(odgovor1.data){
                 const kek=odgovor1.data;
                 Uporabnik.findById(odgovor1.data)
                     .exec((napaka,uporabnik)=>{
@@ -142,7 +142,9 @@ const addWeight = (req, res) => {
                             })
                         };
                     })
-
+            }else{
+                res.redirect('/prijava')
+            }
         })
 };
 const dogodkiPreberiIzbrano = (req, res) => {
@@ -785,6 +787,7 @@ const getAddWeight = (req, res) => {
     axios
         .get('api/seja')
         .then((odgovor1)=>{
+            if(odgovor1.data){
                 const kek=odgovor1.data;
                 Uporabnik.findById(odgovor1.data)
                     .exec((napaka,uporabnik)=>{
@@ -797,7 +800,9 @@ const getAddWeight = (req, res) => {
                             });
                         };
                     })
-
+            }else{
+                res.redirect('/prijava')
+            }
         })
 
 }
