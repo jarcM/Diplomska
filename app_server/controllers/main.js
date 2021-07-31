@@ -120,7 +120,7 @@ const showTrenutniProfil = (req, res, uporabnik) => {
                 Exercise.find()
                     .sort(({_id:1}))
                 res.render('trenutniProfil', {
-                    title: "Profil",
+                    title: "User profile",
                     uporabnik,
                     exercise
 
