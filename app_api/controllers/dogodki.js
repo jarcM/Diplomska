@@ -116,7 +116,7 @@ const oglasKreiraj = (req, res) => {
 };
 const addWeight = (req, res) => {
     axios
-        .get('api/seja')
+        .get('/api/uporabniki/' + req.session.Auth)
         .then((odgovor1)=>{
             if(odgovor1.data){
                 const kek=odgovor1.data;
@@ -784,8 +784,14 @@ const posodobiDogodek = async (req, res) => {
 };
 
 const getAddWeight = (req, res) => {
+    console.log(req.session.Auth)
+    console.log(req.session.Auth)
+    console.log(req.session.Auth)
+    console.log(req.session.Auth)
+    console.log(req.session.Auth)
+
     axios
-        .get('api/seja')
+        .get('/api/uporabniki/' + req.session.Auth)
         .then((odgovor1)=>{
             if(odgovor1.data){
                 const kek=odgovor1.data;
