@@ -22,7 +22,6 @@ router.get('/previousWorkouts/:idDogodka', ctrlDogodki.previousWorkouts);
 router.get('/AddEvent', ctrlDogodki.dodajDogodek);
 router.get('/objava', ctrlDogodki.dodajOglas);
 router.post('/addWeight', ctrlDogodki.addWeight);
-router.get('/addWeight', ctrlDogodki.getAddWeight);
 
 router.get('/dodajVaje', ctrlDogodki.dodajVaje);
 router.get("/lol", ctrlDogodki.lol);
@@ -47,6 +46,7 @@ router.get('/splosnipogoji', ctrlLogin.splosnipogoji);
 router.post('/registracija', ctrlUporabniki.shraniUporabnika);
 router.post('/prijava', ctrlUporabniki.preveriUporabnika);
 router.get('/profil', ctrlMain.profil);
+router.get('/addWeight', ctrlMain.getAddWeight);
 router.get('/trenutniProfil', ctrlMain.trenutniProfil);
 router.get('/servicesList', ctrlMain.servicesList);
 router.get('/oglasi', ctrlMain.oglasi);

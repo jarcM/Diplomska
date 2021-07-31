@@ -783,35 +783,7 @@ const posodobiDogodek = async (req, res) => {
         });
 };
 
-const getAddWeight = (req, res) => {
-    console.log(req.session.Auth)
-    console.log(req.session.Auth)
-    console.log(req.session.Auth)
-    console.log(req.session.Auth)
-    console.log(req.session.Auth)
 
-    axios
-        .get('/api/uporabniki/' + req.session.Auth)
-        .then((odgovor1)=>{
-            if(odgovor1.data){
-                const kek=odgovor1.data;
-                Uporabnik.findById(odgovor1.data)
-                    .exec((napaka,uporabnik)=>{
-                        if(napaka){
-                            console.long(napaka)
-                        }else{
-                            res.render('addWeight', {
-                                title: 'Add weight',
-                                weight:uporabnik.weight
-                            });
-                        };
-                    })
-            }else{
-                res.redirect('/prijava')
-            }
-        })
-
-}
 module.exports = {
     dogodkiSeznam,
     getDogodkiSeznam,
@@ -842,6 +814,5 @@ module.exports = {
     currentWorkout2,
     previousWorkouts,
     addWeight,
-    getAddWeight
 
 };
