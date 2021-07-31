@@ -2,11 +2,6 @@ const mongoose = require('mongoose');
 
 
 
-const lokacijaShema = new mongoose.Schema({
-    mesto: {type: String},
-    naslov: {type: String, required: true},
-});
-
 
 
 const dogodekShema = new mongoose.Schema({
@@ -70,6 +65,11 @@ const exerciseShema = new mongoose.Schema({
     naslov: {type: String},
     mainBodyPart:{type: String},
 });
+const weightShema=new mongoose.Schema({
+    weight:{type:Number},
+    date:{type:String},
+
+})
 const uporabnikShema = new mongoose.Schema({
     email: {type: String, required: true},
     username: {type: String, required: true},
@@ -78,18 +78,19 @@ const uporabnikShema = new mongoose.Schema({
     vloga: {type: String},
     workouts: [programShema],
     priljubljeni:{type:[]},
+    weight:[weightShema],
     ocena: {type: Number, default: 0},
     skupnaOcena:{type:Number,default: 0},
     totalKgLifted:{type:Number}
 });
 mongoose.model('Dogodek', dogodekShema, 'Dogodek');
 mongoose.model("Uporabnik", uporabnikShema, "Uporabnik");
-mongoose.model("Lokacija", lokacijaShema, "Lokacija");
 mongoose.model("Oglas", oglasShema, "Oglas");
 mongoose.model("Program", programShema, "Program");
 mongoose.model("Vaje", vajeShema, "Vaje");
 mongoose.model("RepWeight", repWeightShema, "RepWeight");
 mongoose.model("Exercise", exerciseShema, "Exercise");
+mongoose.model("Weight", weightShema, "Weight")
 
 
 

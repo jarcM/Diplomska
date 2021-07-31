@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Dogodek = mongoose.model('Dogodek');
 const Program = mongoose.model('Program');
 const Exercise = mongoose.model('Exercise');
-
+const Weight=mongoose.model('Weight')
 const Uporabnik = mongoose.model('Uporabnik');
 const Oglas = mongoose.model('Oglas');
 const NodeGeocoder = require('node-geocoder');
@@ -114,7 +114,39 @@ const oglasKreiraj = (req, res) => {
         }
     });
 };
-
+const addWeight = (req, res) => {
+    axios
+        .get('api/seja')
+        .then((odgovor1)=>{
+            if(odgovor1.data){
+                const kek=odgovor1.data;
+                Uporabnik.findById(odgovor1.data)
+                    .exec((napaka,uporabnik)=>{
+                        if(napaka){
+                            console.long(napaka)
+                        }else{
+                            console.log("kekwwww")
+                            var today=new Date()
+                            var date=today.getDate()+"/"+today.getMonth()+"/"+today.getFullYear()
+                            uporabnik.weight.push({
+                                weight:req.body.naslov,
+                                date:date
+                            })
+                            uporabnik.save((napaka,uporabnik)=>{
+                                if (napaka) {
+                                    res.status(400).json(napaka);
+                                } else {
+                                    console.log("kekss")
+                                    res.redirect('/trenutniProfil')
+                                }
+                            })
+                        };
+                    })
+            }else{
+                res.redirect('/prijava')
+            }
+        })
+};
 const dogodkiPreberiIzbrano = (req, res) => {
     Program
         .findById(req.params.idDogodka)
@@ -381,15 +413,32 @@ const currentWorkout = (req, res) => {
                             console.long(napaka)
                         }else{
                             var stevec=uporabnik.workouts.length
-                            console.log(stevec)
-                            if(parseInt(req.params.counter)==uporabnik.workouts[stevec-1].vaje.length-1){
+                            console.log(uporabnik.workouts[stevec-1].vaje.length)
+                            if(parseInt(req.params.counter)==uporabnik.workouts[stevec-1].vaje.length){
                                 res.redirect('/trenutniProfil')
+                            }else{
+                            console.log(uporabnik.workouts.length)
+                            var stevecWorkoutov=uporabnik.workouts.length-2;
+                            var stevecVaj=0;
+                            var array=new Array()
+                            while(stevecWorkoutov!=-1){
+                                for(var i=0;i<uporabnik.workouts[stevecWorkoutov].vaje.length;i++){
+                                    if(uporabnik.workouts[stevecWorkoutov].vaje[i].naslov==
+                                        uporabnik.workouts[stevec-1].vaje[req.params.counter].naslov){
+                                        array[stevecVaj]=uporabnik.workouts[stevecWorkoutov].vaje[i]
+                                        stevecVaj++;
+                                    }
+                                }
+                                stevecWorkoutov--;
                             }
+                            console.log(array)
                             res.render('currentWorkout',{
                                 program:uporabnik.workouts[stevec-1],
                                 counter:req.params.counter,
-                                vaje:uporabnik.workouts[stevec-1].vaje[req.params.counter]
+                                vaje:uporabnik.workouts[stevec-1].vaje[req.params.counter],
+                                last:array
                             })
+                        }
                         };
                     })
             }else{
@@ -734,7 +783,29 @@ const posodobiDogodek = async (req, res) => {
         });
 };
 
+const getAddWeight = (req, res) => {
+    axios
+        .get('api/seja')
+        .then((odgovor1)=>{
+            if(odgovor1.data){
+                const kek=odgovor1.data;
+                Uporabnik.findById(odgovor1.data)
+                    .exec((napaka,uporabnik)=>{
+                        if(napaka){
+                            console.long(napaka)
+                        }else{
+                            res.render('addWeight', {
+                                title: 'Add weight',
+                                weight:uporabnik.weight
+                            });
+                        };
+                    })
+            }else{
+                res.redirect('/prijava')
+            }
+        })
 
+}
 module.exports = {
     dogodkiSeznam,
     getDogodkiSeznam,
@@ -763,6 +834,8 @@ module.exports = {
     addWorkoutToUser,
     currentWorkout,
     currentWorkout2,
-    previousWorkouts
+    previousWorkouts,
+    addWeight,
+    getAddWeight
 
 };

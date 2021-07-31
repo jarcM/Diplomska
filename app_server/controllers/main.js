@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Uporabnik = mongoose.model('Uporabnik');
 const Dogodek = mongoose.model('Dogodek');
+const Exercise = mongoose.model('Exercise');
 
 var apiParametri = {
     streznik: 'http://localhost:' + (process.env.PORT || 3000)
@@ -109,10 +110,23 @@ const trenutniProfil = (req, res) => {
         });
 };
 const showTrenutniProfil = (req, res, uporabnik) => {
-    res.render('trenutniProfil', {
-        title: "Profil",
-        uporabnik,
-    });
+    Exercise.find()
+        .sort(({_id:1}))
+        .exec((napaka, exercise) => {
+            if (napaka) {
+                console.log(napaka);
+                res.status(400).json(napaka);
+            } else {
+                Exercise.find()
+                    .sort(({_id:1}))
+                res.render('trenutniProfil', {
+                    title: "Profil",
+                    uporabnik,
+                    exercise
+
+                })
+        };
+    })
 };
 const showProfil = (req, res, uporabnik) => {
     res.render('profil', {

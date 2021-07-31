@@ -21,6 +21,9 @@ router.get('/previousWorkouts/:idDogodka', ctrlDogodki.previousWorkouts);
 
 router.get('/AddEvent', ctrlDogodki.dodajDogodek);
 router.get('/objava', ctrlDogodki.dodajOglas);
+router.post('/addWeight', ctrlDogodki.addWeight);
+router.get('/addWeight', ctrlDogodki.getAddWeight);
+
 router.get('/dodajVaje', ctrlDogodki.dodajVaje);
 router.get("/lol", ctrlDogodki.lol);
 router.post("/lol", ctrlDogodki.lol);

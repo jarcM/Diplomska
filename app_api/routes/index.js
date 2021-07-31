@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const ctrlDogodki = require('../controllers/dogodki');
 const ctrlUporabniki = require('../controllers/uporabniki');
-const ctrlLokacije = require('../controllers/lokacije');
 const ctrlMain=require('../../app_server/controllers/main')
 
 
@@ -42,10 +41,5 @@ router.get('/uporabniki/test/:email',
     ctrlUporabniki.pridobiUporabnikId)
 /* Lokacije */
 
-router.get('/lokacije',
-    ctrlLokacije.lokacijeSeznam);
-router.post('/lokacije',
-    ctrlLokacije.lokacijeKreiraj);
-router.delete('/lokacije/:idUporabnik',
-    ctrlLokacije.lokacijeIzbrisiIzbrano);
+
 module.exports = router;
