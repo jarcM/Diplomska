@@ -4,7 +4,7 @@ const Dogodek = mongoose.model('Dogodek');
 const Exercise = mongoose.model('Exercise');
 
 var apiParametri = {
-    streznik: 'http://localhost:' + (process.env.PORT || 3000)
+    streznik: 'https://diplomskafitnessapp.herokuapp.com/'
 };
 if (process.env.NODE_ENV === 'production') {
     apiParametri.streznik = 'https://diplomskafitnessapp.herokuapp.com/';
