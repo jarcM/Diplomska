@@ -104,7 +104,6 @@ const oglasKreiraj = (req, res) => {
     console.log("do sm prslo1")
     Program.create({
         naslov: req.body.naslov,
-        visibility: req.body.visibility,
         difficulty: req.body.difficulty,
     }, (napaka, program) => {
         if (napaka) {
@@ -128,6 +127,7 @@ const addWeight = (req, res) => {
                             console.log("kekwwww")
                             var today=new Date()
                             var date=today.getDate()+"/"+today.getMonth()+"/"+today.getFullYear()
+
                             uporabnik.weight.push({
                                 weight:req.body.naslov,
                                 date:date
@@ -380,7 +380,6 @@ const addWorkoutToUser = (req, res) => {
                                 console.log("kek")
                                  uporabnik.workouts.push({
                                      naslov:program.naslov,
-                                     visibility:program.visibility,
                                      difficulty:program.difficulty,
                                      vaje:program.vaje
                                  })
@@ -471,6 +470,13 @@ const currentWorkout2 = (req, res) => {
                             uporabnik.workouts[stevec-1].vaje[req.params.counter].repsWeight[0].weight3=req.body.weight3,
                             uporabnik.workouts[stevec-1].vaje[req.params.counter].repsWeight[0].weight4=req.body.weight4,
                             uporabnik.workouts[stevec-1].vaje[req.params.counter].repsWeight[0].weight5=req.body.weight5
+                            var weight1=req.body.reps1*req.body.weight1
+                            var weight2=req.body.reps2*req.body.weight2
+                            var weight3=req.body.reps3*req.body.weight3
+                            var weight4=req.body.reps4*req.body.weight4
+                            var weight5=req.body.reps5*req.body.weight5
+
+                            uporabnik.totalKgLifted=uporabnik.totalKgLifted+weight1+weight2+weight3+weight4+weight5
                             uporabnik.save((napaka, uporabnik) => {
                                 if (napaka) {
                                     res.status(404).json(napaka);
@@ -501,6 +507,7 @@ const dodajVaje = (req, res) => {
                             console.log(napaka);
                             res.status(400).json(napaka);
                         } else {
+                            Uporabnik.find()
                             Exercise.find()
                                 .sort(({_id:1}))
                             res.render('dodajVaje',{
@@ -584,7 +591,6 @@ const shraniOglas = async (req, res) => {
                 url: '/api/program',
                 data: {
                     naslov: req.body.naslov,
-                    visibility: req.body.visibility,
                     difficulty: req.body.difficulty,
                 }
             }).then(() => {

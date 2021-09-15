@@ -57,7 +57,6 @@ const vajeShema = new mongoose.Schema({
 });
 const programShema = new mongoose.Schema({
     naslov: {type: String},
-    visibility:{type: String},
     difficulty: {type: String, default:"Personal"},
     vaje: [vajeShema],
 });
@@ -74,14 +73,12 @@ const uporabnikShema = new mongoose.Schema({
     email: {type: String, required: true},
     username: {type: String, required: true},
     password: {type: String, required: true},
-    datum: {type: Date},
+    datum: {type: String},
     vloga: {type: String},
     workouts: [programShema],
     priljubljeni:{type:[]},
     weight:[weightShema],
-    ocena: {type: Number, default: 0},
-    skupnaOcena:{type:Number,default: 0},
-    totalKgLifted:{type:Number}
+    totalKgLifted:{type:Number},
 });
 mongoose.model('Dogodek', dogodekShema, 'Dogodek');
 mongoose.model("Uporabnik", uporabnikShema, "Uporabnik");

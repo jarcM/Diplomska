@@ -17,6 +17,7 @@ const uporabnikiKreiraj = (req, res) => {
         username: req.body.username,
         password: req.body.password,
         datum: req.body.datum,
+        totalKgLifted:0
     }, (napaka, uporabniki) => {
         if (napaka) {
             res.status(400).json(napaka);
