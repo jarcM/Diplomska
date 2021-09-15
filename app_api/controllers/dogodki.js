@@ -378,10 +378,13 @@ const addWorkoutToUser = (req, res) => {
                                 console.long(napaka)
                             }else{
                                 console.log("kek")
+                                var datum1=new Date()
+                                var datum2=datum1.getDate()+"/"+datum1.getMonth()+"/"+datum1.getFullYear()
                                  uporabnik.workouts.push({
                                      naslov:program.naslov,
                                      difficulty:program.difficulty,
-                                     vaje:program.vaje
+                                     vaje:program.vaje,
+                                     datumWorkout:datum2
                                  })
                                 uporabnik.save((napaka,uporabnik)=>{
                                     if (napaka) {

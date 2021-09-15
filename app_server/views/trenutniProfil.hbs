@@ -12,10 +12,12 @@
             <table class="table table-striped" style="width: 50%;margin-left: 40%;margin-right: 25%; background-color: #a5c9a5; cursor: pointer">
             <tr>
                 <th style="color: white">Previous workouts</th>
+                <th> Date of workout</th>
             </tr>
             {{#each uporabnik.workouts as |workouts|}}
                 <tr>
                     <td onclick="window.location = '/previousWorkouts/{{@index}}'" style="text-align: center">{{workouts.naslov}}</td>
+                    <td>{{workouts.datumWorkout}}</td>
                 </tr>
             {{/each}}
         </table>

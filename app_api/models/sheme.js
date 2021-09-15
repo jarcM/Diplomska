@@ -58,6 +58,7 @@ const vajeShema = new mongoose.Schema({
 const programShema = new mongoose.Schema({
     naslov: {type: String},
     difficulty: {type: String, default:"Personal"},
+    datumWorkout:{type:String},
     vaje: [vajeShema],
 });
 const exerciseShema = new mongoose.Schema({
