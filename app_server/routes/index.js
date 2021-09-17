@@ -4,7 +4,6 @@ var ctrlLogin = require("../controllers/login");
 const ctrlMain = require('../controllers/main');
 const ctrlDogodki = require('../../app_api/controllers/dogodki');
 const ctrlUporabniki = require('../../app_api/controllers/uporabniki');
-const ctrlMail = require('../controllers/mail')
 
 router.get('/db', ctrlMain.db);
 router.get('/db/init', ctrlMain.init);
@@ -53,7 +52,6 @@ router.get('/oglasi', ctrlDogodki.oglasi);
 router.post('/uporabniki/izbrisiUporabnika', ctrlUporabniki.izbrisiUporabnika);
 router.get('/seja', ctrlUporabniki.vrniSejo);
 
-router.get('/sendMail', ctrlMail.sendMail)
 router.get('/dogodki/:idDogodka', ctrlMain.eventRating);
 router.get('/domacaStran', ctrlMain.home)
 router.get('/', ctrlMain.home2)
