@@ -39,7 +39,7 @@ const home2 = (req, res) => {
 
         res.render('domacaStran2', {
             layout: 'layout2',
-            title: 'Predmet',
+            title: 'Home Page',
         });
 };
 
@@ -61,7 +61,7 @@ const home = (req, res) => {
                 res.render('domacaStran', {
                     username:a,
                     layout: 'layout',
-                    title: 'Predmet',
+                    title: 'Home page',
                 });
             });
 
@@ -319,6 +319,44 @@ const trenutniProfil = (req, res) => {
             res.redirect('/')
         });
 };
+const trenutniProfil2 = (req, res) => {
+
+    Uporabnik.findOne({username: req.params.username})
+        .exec((napaka, uporabnik) => {
+            if (napaka) {
+                console.log(napaka);
+                res.status(400).json(napaka);
+            } else {
+                axios
+                    .get('/api/uporabniki/' + uporabnik._id)
+                    .then((odgovor) => {
+                        showTrenutniProfil2(req, res, odgovor.data);
+                    })
+                    .catch((napaka) => {
+                        res.redirect('/')
+                    });
+            };
+        })
+
+};
+const showTrenutniProfil2 = (req, res, uporabnik) => {
+    Exercise.find()
+        .sort(({_id:1}))
+        .exec((napaka, exercise) => {
+            if (napaka) {
+                console.log(napaka);
+                res.status(400).json(napaka);
+            } else {
+                Exercise.find()
+                    .sort(({_id:1}))
+                res.render('profil', {
+                    title: "User profile",
+                    uporabnik,
+                    exercise,
+                })
+            };
+        })
+};
 const showTrenutniProfil = (req, res, uporabnik) => {
     Exercise.find()
         .sort(({_id:1}))
@@ -332,7 +370,7 @@ const showTrenutniProfil = (req, res, uporabnik) => {
                 res.render('trenutniProfil', {
                     title: "User profile",
                     uporabnik,
-                    exercise
+                    exercise,
                 })
             };
         })
@@ -353,6 +391,7 @@ module.exports = {
     editEvent,
     addEvent,
     trenutniProfil,
+    trenutniProfil2,
     dodajPriljublene,
     priljubljeniKreiraj,
     shraniPriljubljeni,

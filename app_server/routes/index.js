@@ -49,7 +49,7 @@ router.get('/profil', ctrlMain.profil);
 router.get('/addWeight', ctrlDogodki.getAddWeight);
 router.get('/trenutniProfil', ctrlMain.trenutniProfil);
 router.get('/servicesList', ctrlMain.servicesList);
-router.get('/oglasi', ctrlMain.oglasi);
+router.get('/oglasi', ctrlDogodki.oglasi);
 router.post('/uporabniki/izbrisiUporabnika', ctrlUporabniki.izbrisiUporabnika);
 router.get('/seja', ctrlUporabniki.vrniSejo);
 
@@ -57,6 +57,8 @@ router.get('/sendMail', ctrlMail.sendMail)
 router.get('/dogodki/:idDogodka', ctrlMain.eventRating);
 router.get('/domacaStran', ctrlMain.home)
 router.get('/', ctrlMain.home2)
+router.get('/profile/:username',ctrlMain.trenutniProfil2)
+router.post('/trenutniProfil', ctrlDogodki.addFriend);
 
 router.post('/uporabniki/priljubljeni/:idDogodka', ctrlMain.shraniPriljubljeni);
 

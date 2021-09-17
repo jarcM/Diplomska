@@ -60,6 +60,7 @@ const programShema = new mongoose.Schema({
     difficulty: {type: String, default:"Personal"},
     datumWorkout:{type:String},
     vaje: [vajeShema],
+    idMainProgram:{type:String}
 });
 const exerciseShema = new mongoose.Schema({
     naslov: {type: String},
@@ -68,6 +69,10 @@ const exerciseShema = new mongoose.Schema({
 const weightShema=new mongoose.Schema({
     weight:{type:Number},
     date:{type:String},
+
+})
+const friendsShema=new mongoose.Schema({
+    username:{type:String},
 
 })
 const uporabnikShema = new mongoose.Schema({
@@ -80,6 +85,8 @@ const uporabnikShema = new mongoose.Schema({
     priljubljeni:{type:[]},
     weight:[weightShema],
     totalKgLifted:{type:Number},
+    friends:[friendsShema],
+    program:[programShema]
 });
 mongoose.model('Dogodek', dogodekShema, 'Dogodek');
 mongoose.model("Uporabnik", uporabnikShema, "Uporabnik");
@@ -88,7 +95,8 @@ mongoose.model("Program", programShema, "Program");
 mongoose.model("Vaje", vajeShema, "Vaje");
 mongoose.model("RepWeight", repWeightShema, "RepWeight");
 mongoose.model("Exercise", exerciseShema, "Exercise");
-mongoose.model("Weight", weightShema, "Weight")
+mongoose.model("Weight", weightShema, "Weight");
+mongoose.model("Friends", friendsShema,"Friends");
 
 
 

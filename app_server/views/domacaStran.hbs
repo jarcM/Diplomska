@@ -1,7 +1,6 @@
 <div class="header_section" >
 
 
-    <button class="btn"><i onclick="window.location='/addWeight'" class="fas fa-weight fa-10x"></i></button>
 
 </div>
     <!-- New Arrivals section start -->
@@ -18,62 +17,5 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script>
-        var slides = document.querySelectorAll('.slide');
-        var btns = document.querySelectorAll('.btn');
-        var images = document.querySelectorAll('.slika1');
-        images.forEach((image) => {
-            image.src="img/doggobanner4.jpg";
-        });
-        let currentSlide = 1;
 
-        // Javascript for image slider manual navigation
-        var manualNav = function(manual){
-            slides.forEach((slide) => {
-                slide.classList.remove('active');
-
-                btns.forEach((btn) => {
-                    btn.classList.remove('active');
-                });
-            });
-
-            slides[manual].classList.add('active');
-            btns[manual].classList.add('active');
-        }
-
-        btns.forEach((btn, i) => {
-            btn.addEventListener("click", () => {
-                manualNav(i);
-                currentSlide = i;
-            });
-        });
-
-        // Javascript for image slider autoplay navigation
-        var repeat = function(activeClass){
-            let active = document.getElementsByClassName('active');
-            let i = 1;
-
-            var repeater = () => {
-                setTimeout(function(){
-                    [...active].forEach((activeSlide) => {
-                        activeSlide.classList.remove('active');
-                    });
-
-                    slides[i].classList.add('active');
-                    btns[i].classList.add('active');
-                    i++;
-
-                    if(slides.length == i){
-                        i = 0;
-                    }
-                    if(i >= slides.length){
-                        return;
-                    }
-                    repeater();
-                }, 10000);
-            }
-            repeater();
-        }
-        repeat();
-    </script>
 </div>

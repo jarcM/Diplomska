@@ -112,6 +112,47 @@ const oglasKreiraj = (req, res) => {
             res.status(201).json(program);
         }
     });
+    axios
+        .get('api/seja')
+        .then((odgovor1)=>{
+            if(odgovor1){
+                console.log(odgovor1.data)
+                Uporabnik.findById(odgovor1.data)
+                    .exec((napaka,uporabnik)=>{
+                        if(napaka){
+                            console.long(napaka)
+                        }else{
+                            Program.findOne()
+                                .sort(({_id:-1}))
+                                .exec((napaka, program) => {
+                                    if (napaka) {
+                                        console.log(napaka);
+                                        res.status(400).json(napaka);
+                                    } else {
+                                        console.log(program.naslov)
+                                        uporabnik.program.push({
+                                            naslov: req.body.naslov,
+                                            difficulty: req.body.difficulty,
+                                            idMainProgram:program._id
+
+                                        })
+                                        uporabnik.save((napaka,uporabnik)=>{
+                                            if (napaka) {
+                                                res.status(400).json(napaka);
+                                            } else {
+                                                console.log("kekss")
+
+                                            }
+                                        })
+                                    }
+                                });
+                            console.log(uporabnik.username)
+                        };
+                    })
+            }else{
+                res.redirect('/domacaStran')
+            }
+        })
 };
 const addWeight = (req, res) => {
     axios
@@ -127,7 +168,6 @@ const addWeight = (req, res) => {
                             console.log("kekwwww")
                             var today=new Date()
                             var date=today.getDate()+"/"+today.getMonth()+"/"+today.getFullYear()
-
                             uporabnik.weight.push({
                                 weight:req.body.naslov,
                                 date:date
@@ -140,6 +180,44 @@ const addWeight = (req, res) => {
                                     res.redirect('/trenutniProfil')
                                 }
                             })
+                        };
+                    })
+            }else{
+                res.redirect('/prijava')
+            }
+        })
+};
+const addFriend = (req, res) => {
+    axios
+        .get('/api/uporabniki/' + req.session.Auth)
+        .then((odgovor1)=>{
+            if(odgovor1.data){
+                const kek=odgovor1.data;
+                Uporabnik.findById(odgovor1.data)
+                    .exec((napaka,uporabnik)=>{
+                        if(napaka){
+                            console.long(napaka)
+                        }else{
+                            console.log(req.body.addFriend)
+                            Uporabnik.findOne({username: req.body.addFriend})
+                                .exec((napaka2,uporabnikUsername)=>{
+                                if(!uporabnikUsername){
+                                    res.redirect('/trenutniProfil')
+                                }else{
+                                    uporabnik.friends.push({
+                                    username:req.body.addFriend
+                                })
+                                    uporabnik.save((napaka,uporabnik)=>{
+                                        if (napaka) {
+                                            res.status(400).json(napaka);
+                                        } else {
+                                            console.log("kekss")
+                                            res.redirect('/trenutniProfil')
+                                        }
+                                    })
+                                }
+                            })
+
                         };
                     })
             }else{
@@ -494,7 +572,7 @@ const currentWorkout2 = (req, res) => {
             }
         })
 }
-const dodajVaje = (req, res) => {
+const dodajVaje = (req, res) => {-
     Program.findOne()
         .sort(({_id:-1}))
         .exec((napaka, program) => {
@@ -524,7 +602,6 @@ const dodajVaje = (req, res) => {
             }
         });
 }
-
 
 const addExercise = (req, res) => {
     res.render('addExercise',{
@@ -602,7 +679,12 @@ const shraniOglas = async (req, res) => {
                 console.log(napaka);
             });
 }
-const shraniVaje = async (req, res, program) => {
+const shraniVaje = async (req, res, program,uporabnik) => {
+    console.log("AAAAAAAAAAAAAAAAA")
+    console.log(program)
+    console.log("AAAAAAAAAAAAAAAAA")
+    console.log(uporabnik.program[uporabnik.program.length-1])
+    console.log("AAAAAAAAAAAAAAAAA")
     if (!program) {
         res.status(404).json({"sporočilo": "Ne najdem dogodka."});
     } else {
@@ -616,7 +698,23 @@ const shraniVaje = async (req, res, program) => {
                 reps5:req.body.reps5,
             },
         });
+        uporabnik.program[uporabnik.program.length-1].vaje.push({
+            naslov: req.body.naslov,
+            repsWeight:{
+                reps1:req.body.reps1,
+                reps2:req.body.reps2,
+                reps3:req.body.reps3,
+                reps4:req.body.reps4,
+                reps5:req.body.reps5,
+            },
+        });
         program.save((napaka, program) => {
+            if (napaka) {
+                res.status(400).json(napaka);
+            } else {
+            }
+        });
+        uporabnik.save((napaka, uporabnikProgram) => {
             if (napaka) {
                 res.status(400).json(napaka);
             } else {
@@ -625,6 +723,7 @@ const shraniVaje = async (req, res, program) => {
         });
     }
 }
+
 const exerciseKreiraj = (req, res) => {
     console.log("do sm prslo1")
     Exercise.create({
@@ -650,7 +749,23 @@ const vajeKreiraj = (req, res) => {
                 res.status(400).json(napaka);
             } else {
                 console.log(program._id)
-                shraniVaje(req,res,program, req.body)
+                axios
+                    .get('api/seja')
+                    .then((odgovor1)=>{
+                        if(odgovor1){
+                            console.log(odgovor1.data)
+                            Uporabnik.findById(odgovor1.data)
+                                .exec((napaka,uporabnik)=>{
+                                    if(napaka){
+                                        console.long(napaka)
+                                    }else{
+                                        shraniVaje(req,res,program,uporabnik, req.body)
+                                            }
+                                })
+                        }else{
+                            res.redirect('/domacaStran')
+                        }
+                    })
             }
         });
 
@@ -816,7 +931,28 @@ const showAddWeight = (req, res, uporabnik1) => {
             };
         })
 };
-
+const oglasi = (req, res, programi) => {
+    axios
+        .get('api/seja')
+        .then((odgovor1)=>{
+            if(odgovor1){
+                console.log(odgovor1.data)
+                Uporabnik.findById(odgovor1.data)
+                    .exec((napaka,uporabnik)=>{
+                        if(napaka){
+                            console.log(napaka)
+                        }else{
+                            res.render('oglasi', {
+                                title: 'Moji dogodki',
+                                programi:uporabnik.program
+                            })
+                        };
+                    })
+            }else{
+                res.redirect('/domacaStran')
+            }
+        })
+}
 module.exports = {
     dogodkiSeznam,
     getDogodkiSeznam,
@@ -847,5 +983,7 @@ module.exports = {
     currentWorkout2,
     previousWorkouts,
     addWeight,
-    getAddWeight
+    getAddWeight,
+    addFriend,
+    oglasi
 };

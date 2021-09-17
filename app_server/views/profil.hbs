@@ -1,23 +1,54 @@
 <div class="about_main layout_padding">
     <div class="collection_section">
         <div class="container">
-            <div class="container">
-                <div class="collection_text">Profil</div>
-            </div>
+            <div class="collection_text">Profil</div>
         </div>
     </div>
-    <div style="text-align: center">
-        <h2>Povprečna ocena profila:</h2>
-        <div>{{{zvezdice uporabnik.ocena}}}</div>
+    <div class="container bg-light2 flex-wrapper">
+        <div class="row bg-light">
+
+            <div class="col bg-light2">
+
+                <table class="table table-striped" style="width: 50%;margin-left: 40%;margin-right: 25%; background-color: #a5c9a5; cursor: pointer">
+                    <tr>
+                        <th style="color: white">Previous workouts</th>
+                        <th> Date of workout</th>
+                    </tr>
+                    {{#each uporabnik.workouts as |workouts|}}
+                        <tr>
+                            <td onclick="window.location = '/previousWorkouts/{{@index}}'" style="text-align: center">{{workouts.naslov}}</td>
+                            <td>{{workouts.datumWorkout}}</td>
+                        </tr>
+                    {{/each}}
+                </table>
+            </div>
+            x            <div class="col">
+            <div class="row mb-5">
+                <table class="table table-hover table-bordered table-dark" style="width: 50%; margin-left: auto;margin-right: auto">
+                    <tr>
+                        <td>Uporabnisko ime</td>
+                        <td>{{uporabnik.username}}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>{{uporabnik.email}}</td>
+                    </tr>
+                    <tr>
+                        <td>Birth date</td>
+                        <td>{{uporabnik.datum}}</td>
+                    </tr>
+                    <tr>
+                        <td>Total Kg lifted</td>
+                        <td>{{uporabnik.totalKgLifted}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="row">
+                <div class="col"></div>
+            </div>
+        </div>
+
+        </div>
     </div>
-    <table class="table table-hover table-bordered table-striped" style="width: 50%;margin-left: 25%;margin-right: 25%; background-color: #a5c9a5">
-        <tr>
-            <td>Uporabnisko ime</td>
-            <td>{{uporabnik.username}}</td>
-        </tr>
-        <tr>
-            <td>Email</td>
-            <td>{{uporabnik.email}}</td>
-        </tr>
-    </table>
 </div>
+

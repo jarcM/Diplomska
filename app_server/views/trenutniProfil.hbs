@@ -4,6 +4,8 @@
             <div class="collection_text">Profil</div>
         </div>
     </div>
+    <button class="btn"><i onclick="window.location='/addWeight'" class="fas fa-weight fa-10x"></i></button>
+
     <div class="container bg-light2 flex-wrapper">
         <div class="row bg-light">
 
@@ -49,6 +51,36 @@ x            <div class="col">
             </div>
 
             <div class="column">
+                <form id="dodajPrijatelja" action="" method="post" role="form">
+                    <div class="container">
+                        <div class="container bg-light2 flex-wrapper">
+                            <div class="container">
+                                <div class="racing_shoes">
+                                    <div class="form-group">
+                                        <label>Add a friend(by username):</label>
+                                        <input id="addFriend" type="text" class="form-control" name="addFriend" required placeholder="Enter friends username">
+                                    </div>
+                                    <div class="form-group" style="text-align:center">
+                                        <button style="align-items: center"class="btn btn-primary" id="uredi">Potrdi</button>
+                                    </div>
+                                    <div class="col bg-light2">
+                                        <table class="table table-striped" style="width: 100%; background-color: #a5c9a5; cursor: pointer">
+                                            <tr>
+                                                <th style="color: white">Previous workouts</th>
+                                            </tr>
+                                            {{#each uporabnik.friends as |friends|}}
+                                                <tr>
+                                                    <td onclick="window.location = '/profile/{{friends.username}}'" style="text-align: center">{{friends.username}}</td>
+                                                </tr>
+                                            {{/each}}
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
 
             </div>
         </div>
