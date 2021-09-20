@@ -22,7 +22,7 @@
                             </tr>
                         {{/each}}
                     </table>
-                    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+                    <div id="chartContainer" style="height: 300px; width: 100%; background-color: #EBEBEB"></div>
 
                 </div>
             </div>
@@ -34,7 +34,7 @@
 <script>
     window.onload = function () {
         var chart = new CanvasJS.Chart("chartContainer", {
-            theme: "light2",
+            theme: "dark",
             title:{
                 text: "Weight history chart"
             },
@@ -53,7 +53,6 @@
             }]
         });
         chart.render();
-
     }
 </script>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>

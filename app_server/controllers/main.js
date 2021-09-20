@@ -35,11 +35,14 @@ const brisi = (req, res) => {
 }
 
 
-const home2 = (req, res) => {
-
-        res.render('domacaStran2', {
-            layout: 'layout2',
-            title: 'Home Page',
+var home2 = (req, res) => {
+    axios
+        .get('/api/dogodki/')
+        .then((odgovor) => {
+            showServicesList2(req, res, odgovor.data);
+        })
+        .catch((napaka) => {
+            prikaziNapako(req, res, napaka);
         });
 };
 
@@ -164,6 +167,13 @@ const servicesList = (req, res) => {
 const showServicesList = (req, res, programi) => {
     res.render('servicesList', {
         title: 'List oglasov',
+        programi
+    })
+}
+const showServicesList2 = (req, res, programi) => {
+    res.render('servicesList', {
+        title: 'Programs',
+        layout:'layout2',
         programi
     })
 }
