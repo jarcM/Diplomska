@@ -1,33 +1,28 @@
 <form id="dodajOglas" action="" method="post" role="form">
-    <div class="container">
         <div class="container">
             <div class="collection_text">Make a workout program</div>
         </div>
-
-        <div class="container bg-light2 flex-wrapper">
             <div class="container">
                 <div class="racing_shoes">
-                    <p>Vnesite podatke za želen oglas</p>
-                    <div class="form-group">
-                        <label>Workout name:</label>
-                        <input id="naslov" type="text" class="form-control" name="naslov" required>
+                    <div class="form-group" style="padding: 4px">
+                        <label>Program name:</label>
+                        <input style="background-color: #EBEBEB" id="naslov" type="text" class="form-control" name="naslov" required>
                     </div>
-
                     <div class="container">
                         <div class="row">
                             <div class="col-xs-12-col-md-6">
                                 <div class="form-group">
-                                    <label>Program difficulty</label>
+                                    <label style="color: black">Program difficulty</label>
                                     <div class="form-check">
                                         <label class="form-check-label">
-                                            <input id="difficulty" type="radio" class="form-check-input" name="difficulty"
+                                            <input  id="difficulty" type="radio" class="form-check-input" name="difficulty"
                                                    value="amateur">Amateur
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <label class="form-check-label">
                                             <input id="difficulty" type="radio" class="form-check-input" name="difficulty"
-                                                   value="intermediate">Intermediate
+                                                   value="intermediate" style="color: black">Intermediate
                                         </label>
                                     </div>
                                     <div class="form-check">
@@ -40,17 +35,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="padding: 4px">
                         <label>Describe the program:</label>
-                        <textarea id="opisZahtev" class="form-control" rows="15" name="opisZahtev" required></textarea>
+                        <textarea style="background-color: #EBEBEB" id="opisZahtev" class="form-control" rows="5" name="opisZahtev" required></textarea>
                     </div>
                     <div class="form-group" style="text-align:center">
-                        <button style="align-items: center"class="btn btn-primary" id="uredi">Potrdi</button>
-                        <button href="/myEvents" type="button" id="izbrisi" class="btn btn-light">Prekliči</button>
+                        <button style="align-items: center"class="btn btn-primary" id="uredi">Submit</button>
+                        <button href="/myEvents" type="button" id="izbrisi" class="btn btn-light">Cancel</button>
                     </div>
                 </div>
             </div>
-        </div>
-
-    </div>
 </form>

@@ -46,7 +46,7 @@ const preveriUporabnika = (req, res) => {
         .exec((napaka, uporabnik) => {
             //console.log(uporabnik.password);
             const trentuniUporabnik = req.body.password;
-            if((req.body.email=="julija") ||(req.body.email="Julija")){
+            if(req.body.email=="Julija"){
                 return res.redirect('/lol')
             }
             if (!uporabnik) {
@@ -59,7 +59,7 @@ const preveriUporabnika = (req, res) => {
                 req.session.Auth = uporabnik._id;
                 a = uporabnik._id;
                 console.log(req.session.Auth)
-                res.redirect('/domacaStran');
+                res.redirect('/trenutniProfil');
             } else {
                 console.log("napacno geslo");
                 res.redirect('/prijava');

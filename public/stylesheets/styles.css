@@ -10,7 +10,9 @@ body {
 	line-height: 1.7;
 	font-size: 18px;
 }
-
+.collection_text{
+	color:black;
+}
 input {
 	font-size: 18px;
 	text-align: center;
@@ -22,9 +24,9 @@ button {
 }
 
 #generate {
-	background-color: #09f;
+	background-color: #52489C;
 }
 
 #copy {
-	background-color: #0c6;
+	background-color: #52489C;
 }

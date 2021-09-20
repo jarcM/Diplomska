@@ -1,16 +1,17 @@
 <div class="container">
     <div class="container">
-        <div class="collection_text">Storitve</div>
+        <div class="collection_text">Programs</div>
     </div>
     <div class="table-responsive-sm">
-        <table id="eventTable" class="table table-striped" style="background-color: #a5c9a5; cursor: pointer">
+        <table id="eventTable" class="table table-striped" style="background-color: #59C3C3; cursor: pointer">
             <tr>
                 <th>Workout program</th>
+                <th>Difficulty</th>
             </tr>
-
             {{#each programi as | programi |}}
                 <tr onclick="window.location = '/eventDetails/{{_id}}'">
                     <td id="uporabnik1">{{naslov}}</td>
+                    <td >{{difficulty}}</td>
                 </tr>
             {{/each}}
         </table>

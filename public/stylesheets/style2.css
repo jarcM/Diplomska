@@ -25,6 +25,9 @@
 html {
   scroll-behavior: smooth;
 }
+label {
+  color: black;
+}
 
 body {
   color: #666666;
@@ -33,7 +36,7 @@ body {
   line-height: 1.80857;
   font-weight: normal;
   overflow-x: hidden;
-  background-color: darkseagreen;
+  background-color: #EBEBEB;
 }
 .logo{
   margin-left: auto;
@@ -223,7 +226,7 @@ button {
 
 .header_section {
   width: 100%;
-  background-color: #90a407;
+  background-color: #F45B69;
   height: auto;
   padding: 20px 0px;
   background-size: 100%;
@@ -347,7 +350,7 @@ button {
 }
 
 .tukaj {
-  background-color: darkseagreen;
+  background-color: #EBEBEB;
 }
 
 body {
@@ -578,7 +581,7 @@ body {
 .racing_shoes {
   width: 100%;
   float: left;
-  background-color: #a5c9a5;
+  background-color: #59C3C3;
   height: auto;
   padding-top: 70px;
   background-size: 100%;
@@ -867,7 +870,10 @@ a:hover {
   font-size: 28px;
   color: #ebebeb;
 }
-
+#addFriend{
+  background-color: #EBEBEB;
+  border: 3px solid #52489C;
+}
 .copyright {
   width: 100%;
   float: left;
@@ -875,7 +881,7 @@ a:hover {
   color: #ffffff;
   text-align: center;
   padding: 10px 0px;
-  background-color: #3a2603;
+  background-color: #52489C;
   font-family: Poppins;
 }
 .column {
@@ -957,11 +963,11 @@ a:hover {
 }
 /* Profil tabela */
 .table-dark {
-  --bs-table-bg: #a5c9a5;
+  --bs-table-bg: #59C3C3;
 }
 
 button[id=uredi]{
-  background-color: #90a407;
+  background-color: #F45B69;
   width: 50%;
   color: white;
   padding: 15px;
@@ -979,11 +985,11 @@ button[id=izbrisi]{
   cursor: pointer;
 }
 
-button[id=uredi]:hover{
-  background-color: #657305;
-
+button[id=uredi]:hover {
+  opacity: 60%;
+}
 button[id=alreadyRezervirano]{
-  background-color: #90a407;
+  background-color: #F45B69;
   width: 50%;
   color: white;
   padding: 15px;
@@ -996,7 +1002,7 @@ button[id=alreadyRezervirano]:hover {
 }
 
 button[id=rezerviraj]{
-  background-color: #90a407;
+  background-color: #F45B69;
   width: 50%;
   color: white;
   padding: 15px;

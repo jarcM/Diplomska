@@ -1,19 +1,16 @@
 <div class="about_main layout_padding">
+
     <div class="collection_section">
         <div class="container">
             <div class="collection_text">Profil</div>
         </div>
     </div>
-    <button class="btn"><i onclick="window.location='/addWeight'" class="fas fa-weight fa-10x"></i></button>
-
     <div class="container bg-light2 flex-wrapper">
         <div class="row bg-light">
-
             <div class="col bg-light2">
-
-            <table class="table table-striped" style="width: 50%;margin-left: 40%;margin-right: 25%; background-color: #a5c9a5; cursor: pointer">
+            <table class="table table-striped" style="width: 50%;margin-left: 40%;margin-right: 25%; background-color: #59C3C3; cursor: pointer">
             <tr>
-                <th style="color: white">Previous workouts</th>
+                <th >Previous workouts</th>
                 <th> Date of workout</th>
             </tr>
             {{#each uporabnik.workouts as |workouts|}}
@@ -23,24 +20,24 @@
                 </tr>
             {{/each}}
         </table>
-                </div>
-x            <div class="col">
+            </div>
+            <div class="col" >
                 <div class="row mb-5">
-                    <table class="table table-hover table-bordered table-dark" style="width: 50%; margin-left: auto;margin-right: auto">
+                    <table style="background-color: #59C3C3" class="table" style="width: 50%;background-color: #59C3C3; margin-left: auto;margin-right: auto">
                         <tr>
-                            <td>Uporabnisko ime</td>
+                            <td style="font-weight: bold">Uporabnisko ime</td>
                             <td>{{uporabnik.username}}</td>
                         </tr>
                         <tr>
-                            <td>Email</td>
+                            <td style="font-weight: bold">Email</td>
                             <td>{{uporabnik.email}}</td>
                         </tr>
                         <tr>
-                            <td>Birth date</td>
+                            <td style="font-weight: bold">Birth date</td>
                             <td>{{uporabnik.datum}}</td>
                         </tr>
                         <tr>
-                            <td>Total Kg lifted</td>
+                            <td style="font-weight: bold">Total Kg lifted</td>
                             <td>{{uporabnik.totalKgLifted}}</td>
                         </tr>
                     </table>
@@ -49,24 +46,14 @@ x            <div class="col">
                     <div class="col"></div>
                 </div>
             </div>
-
             <div class="column">
                 <form id="dodajPrijatelja" action="" method="post" role="form">
-                    <div class="container">
                         <div class="container bg-light2 flex-wrapper">
                             <div class="container">
-                                <div class="racing_shoes">
-                                    <div class="form-group">
-                                        <label>Add a friend(by username):</label>
-                                        <input id="addFriend" type="text" class="form-control" name="addFriend" required placeholder="Enter friends username">
-                                    </div>
-                                    <div class="form-group" style="text-align:center">
-                                        <button style="align-items: center"class="btn btn-primary" id="uredi">Potrdi</button>
-                                    </div>
                                     <div class="col bg-light2">
-                                        <table class="table table-striped" style="width: 100%; background-color: #a5c9a5; cursor: pointer">
+                                        <table class="table table-striped" style="width: 100%; background-color: #59C3C3; cursor: pointer">
                                             <tr>
-                                                <th style="color: white">Previous workouts</th>
+                                                <th >Friends</th>
                                             </tr>
                                             {{#each uporabnik.friends as |friends|}}
                                                 <tr>
@@ -74,16 +61,21 @@ x            <div class="col">
                                                 </tr>
                                             {{/each}}
                                         </table>
+                                        <div class="form-group">
+                                            <label>Add a friend:</label>
+                                            <input id="addFriend" type="text" class="form-control" name="addFriend" required placeholder="Enter friends username">
+                                            <div class="form-group" style="text-align:center">
+                                                <button style="align-items: center"class="btn btn-primary" id="uredi">Confirm</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                    </div>
                 </form>
-
             </div>
-        </div>
+        <button class="btn"><i onclick="window.location='/addWeight'" class="fas fa-weight fa-10x"></i></button>
+
     </div>
 </div>
 

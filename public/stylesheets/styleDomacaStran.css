@@ -11,13 +11,15 @@
     background-image: url("../img/704428.jpg");
     background-repeat: repeat-y;
 }
-
+.collection_text{
+    color:black;
+}
 body2{
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #1D212B;
+    background: #52489C;
 }
 
 .img-slider{
@@ -25,7 +27,7 @@ body2{
     width: 1200px;
     height: 560px;
     margin: auto;
-    background: #1D212B;
+    background: #52489C;
 }
 
 .img-slider .slide{

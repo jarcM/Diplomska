@@ -3,17 +3,18 @@ input[type=email], input[type=password] , input[id=username], input[type=text]{
     margin: 8px 0;
     padding: 12px 20px;
     display: inline-block;
-    border: 2px solid #90a407;
+    border: 2px solid #52489C;
     box-sizing: border-box;
+    background-color: #EBEBEB;
 }
 #dodajUporabnik {
-    border: 3px solid #90a407;
+    border: 3px solid #52489C;
 }
 #prijavaform {
-    border: 3px solid #90a407;
+    border: 3px solid #52489C;
 }
 button[id=register]{
-    background-color: #90a407;
+    background-color: #F45B69;
     width: 100%;
     color: white;
     padding: 15px;
@@ -26,23 +27,24 @@ button:hover {
 }
 .container {
     padding: 25px;
-    background-color: white;
-    color:black;
 }
 div[id=cont]{
     text-align: right;
    }
 #navbarid{
-    background-color:#90a407;
+    background-color:#52489C;
 }
 #navbarbutton{
     color:black;
-    border-color:#90a407;
+    border-color:#52489C;
 }
 #navbarsearch{
     border-color:black;
 }
 #navbarbutton:hover{
-    background-color: #90a407;
+    background-color: white;
     opacity:50%;
+}
+body{
+    background-color: #EBEBEB;
 }
