@@ -55,9 +55,6 @@
         </script>
         <div class="row">
             <div class="col">
-                <div class="logo"><a href="#"><img src="/images/dog_walkers_logo2.png" style="padding-left:20px;width: 50%;height: 50%;position: center"></a></div>
-            </div>
-            <div class="col">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <button style="background-color:white" class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent"
@@ -65,8 +62,8 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent" style="white-space: nowrap; padding-top: 25px">
+                        <img class="logo" src="/images/dog_walkers_logo2.png">
                         <ul class="navbar-nav mr-auto">
-
                             <li class="nav-item">
                                 <a class="nav-item nav-link" href="/trenutniProfil">Profile</a>
                             </li>
@@ -79,11 +76,20 @@
                             <li class="nav-item" style="">
                                 <a class="nav-item nav-link" href="/objava">Add&nbsp workout program</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-item nav-link" href="/addExercise">Add&nbspexercise</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Tools
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="nav-item nav-link" href="/bmrcalculator">BMR&nbspcalculator</a>
+                                    <a class="nav-item nav-link" href="/1rmcalculator">1RM&nbspcalculator</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="nav-item nav-link" href="/addExercise">Add&nbspexercise</a>
+
+                                </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-item nav-link" href="/prijava">Odjava</a>
+                                <a class="nav-item nav-link" href="/prijava">Logout</a>
                             </li>
                         </ul>
                     </div>

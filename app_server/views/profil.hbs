@@ -1,7 +1,7 @@
 <div class="about_main layout_padding">
     <div class="collection_section">
         <div class="container">
-            <div class="collection_text">Profil</div>
+            <div class="collection_text">Profile</div>
         </div>
     </div>
     <div class="container bg-light2 flex-wrapper">
@@ -9,37 +9,37 @@
 
             <div class="col bg-light2">
 
-                <table class="table table-striped" style="width: 50%;margin-left: 40%;margin-right: 25%; background-color: #59C3C3; cursor: pointer">
+                <table class="table table-hover table-bordered table-dark" style="width: 50%;margin-left: 40%;margin-right: 25%; background-color: #59C3C3; cursor: pointer">
                     <tr>
-                        <th style="color: white">Previous workouts</th>
-                        <th> Date of workout</th>
+                        <th style="color: black">Previous workouts</th>
+                        <th style="color: black"> Date of workout</th>
                     </tr>
                     {{#each uporabnik.workouts as |workouts|}}
                         <tr>
-                            <td onclick="window.location = '/previousWorkouts/{{@index}}'" style="text-align: center">{{workouts.naslov}}</td>
-                            <td>{{workouts.datumWorkout}}</td>
+                            <td style="color: black" onclick="window.location = '/previousWorkouts/{{@index}}'" style="text-align: center">{{workouts.naslov}}</td>
+                            <td style="color: black">{{workouts.datumWorkout}}</td>
                         </tr>
                     {{/each}}
                 </table>
             </div>
-            x            <div class="col">
+            <div class="col">
             <div class="row mb-5">
                 <table class="table table-hover table-bordered table-dark" style="width: 50%; margin-left: auto;margin-right: auto">
                     <tr>
-                        <td>Uporabnisko ime</td>
-                        <td>{{uporabnik.username}}</td>
+                        <td style="font-weight: bold;color: black">Uporabnisko ime</td>
+                        <td style="color: black">{{uporabnik.username}}</td>
                     </tr>
                     <tr>
-                        <td>Email</td>
-                        <td>{{uporabnik.email}}</td>
+                        <td style="font-weight: bold;color: black">Email</td>
+                        <td style="color: black">{{uporabnik.email}}</td>
                     </tr>
                     <tr>
-                        <td>Birth date</td>
-                        <td>{{uporabnik.datum}}</td>
+                        <td style="font-weight: bold;color: black">Birth date</td>
+                        <td style="color: black">{{uporabnik.datum}}</td>
                     </tr>
                     <tr>
-                        <td>Total Kg lifted</td>
-                        <td>{{uporabnik.totalKgLifted}}</td>
+                        <td style="font-weight: bold;color: black">Total Kg lifted</td>
+                        <td style="color: black">{{uporabnik.totalKgLifted}}</td>
                     </tr>
                 </table>
             </div>

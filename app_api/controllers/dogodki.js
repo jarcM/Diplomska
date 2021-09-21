@@ -917,6 +917,16 @@ const getAddWeight = (req, res) => {
             res.redirect('/')
         });
 };
+const get1rmcalculator = (req, res) => {
+    res.render('1rmcalculator',{
+        title: '1 Rep max calculator'
+    })
+};
+const bmrcalculator = (req, res) => {
+    res.render('bmrcalculator',{
+        title: 'BMR calculator'
+    })
+};
 const showAddWeight = (req, res, uporabnik1) => {
     console.log("prslodosm")
     Uporabnik.findById(uporabnik1)
@@ -985,5 +995,7 @@ module.exports = {
     addWeight,
     getAddWeight,
     addFriend,
-    oglasi
+    oglasi,
+    get1rmcalculator,
+    bmrcalculator
 };

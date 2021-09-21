@@ -1,14 +1,15 @@
 <div class="container">
     <div class="container">
-        <div class="collection_text">Storitve</div>
+        <div class="collection_text">My programs</div>
     </div>
     <div class="table-responsive-sm">
-        <table id="eventTable" class="table table-striped" style="background-color: #59C3C3; cursor: pointer">
+        <table id="eventTable" class="table table-hover" style="background-color: #59C3C3;width: 500px;margin: auto; cursor: pointer">
+            <thead>
             <tr>
                 <th>Workout program</th>
                 <th >Difficulty</th>
             </tr>
-
+            </thead>
             {{#each programi as | programi |}}
                 <tr onclick="window.location = '/eventDetails/{{idMainProgram}}'">
                     <td id="uporabnik1">{{naslov}}</td>

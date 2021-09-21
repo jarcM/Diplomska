@@ -2,48 +2,48 @@
 
     <div class="collection_section">
         <div class="container">
-            <div class="collection_text">Profil</div>
+            <div class="collection_text">Profile</div>
         </div>
     </div>
     <div class="container bg-light2 flex-wrapper">
         <div class="row bg-light">
             <div class="col bg-light2">
-            <table class="table table-striped" style="width: 50%;margin-left: 40%;margin-right: 25%; background-color: #59C3C3; cursor: pointer">
+            <table class="table table-hover table-bordered table-dark" style="width: 50%;margin-left: 40%;margin-right: 25%; background-color: #59C3C3; cursor: pointer">
             <tr>
-                <th >Previous workouts</th>
-                <th> Date of workout</th>
+                <th  style="color: black">Previous workouts</th>
+                <th style="color: black"> Date of workout</th>
             </tr>
             {{#each uporabnik.workouts as |workouts|}}
                 <tr>
-                    <td onclick="window.location = '/previousWorkouts/{{@index}}'" style="text-align: center">{{workouts.naslov}}</td>
-                    <td>{{workouts.datumWorkout}}</td>
+                    <td style="color: black" onclick="window.location = '/previousWorkouts/{{@index}}'" style="text-align: center">{{workouts.naslov}}</td>
+                    <td style="color: black">{{workouts.datumWorkout}}</td>
                 </tr>
             {{/each}}
         </table>
             </div>
             <div class="col" >
                 <div class="row mb-5">
-                    <table style="background-color: #59C3C3" class="table" style="width: 50%;background-color: #59C3C3; margin-left: auto;margin-right: auto">
+                    <table style="background-color: #59C3C3" class="table table-hover table-bordered table-dark" style="width: 50%;background-color: #59C3C3; margin-left: auto;margin-right: auto">
                         <tr>
-                            <td style="font-weight: bold">Uporabnisko ime</td>
-                            <td>{{uporabnik.username}}</td>
+                            <td   style="font-weight: bold;color: black">Uporabnisko ime</td>
+                            <td style="color: black">{{uporabnik.username}}</td>
                         </tr>
                         <tr>
-                            <td style="font-weight: bold">Email</td>
-                            <td>{{uporabnik.email}}</td>
+                            <td style="font-weight: bold;color: black">Email</td>
+                            <td style="color: black">{{uporabnik.email}}</td>
                         </tr>
                         <tr>
-                            <td style="font-weight: bold">Birth date</td>
-                            <td>{{uporabnik.datum}}</td>
+                            <td style="font-weight: bold;color: black">Birth date</td>
+                            <td style="color: black">{{uporabnik.datum}}</td>
                         </tr>
                         <tr>
-                            <td style="font-weight: bold">Total Kg lifted</td>
-                            <td>{{uporabnik.totalKgLifted}}</td>
+                            <td style="font-weight: bold;color: black">Total Kg lifted</td>
+                            <td style="color: black">{{uporabnik.totalKgLifted}}</td>
                         </tr>
                     </table>
                 </div>
                 <div style="display: flex" >
-                    <button class="btn"><i onclick="window.location='/addWeight'" class="fas fa-weight fa-10x"></i></button>
+                    <button style="margin: auto" class="btn"><i onclick="window.location='/addWeight'" class="fas fa-weight fa-10x"></i></button>
                 </div>
                 <div class="row">
                     <div class="col"></div>
@@ -55,13 +55,13 @@
                         <div class="container bg-light2 flex-wrapper">
                             <div class="container">
                                     <div class="col bg-light2">
-                                        <table class="table table-striped" style="width: 100%; background-color: #59C3C3; cursor: pointer">
+                                        <table class="table table-hover table-bordered table-dark" style="width: 100%; background-color: #59C3C3; cursor: pointer">
                                             <tr>
-                                                <th >Friends</th>
+                                                <th  style="color: black" >Friends</th>
                                             </tr>
                                             {{#each uporabnik.friends as |friends|}}
                                                 <tr>
-                                                    <td onclick="window.location = '/profile/{{friends.username}}'" style="text-align: center">{{friends.username}}</td>
+                                                    <td style="color: black" onclick="window.location = '/profile/{{friends.username}}'" style="text-align: center">{{friends.username}}</td>
                                                 </tr>
                                             {{/each}}
                                         </table>

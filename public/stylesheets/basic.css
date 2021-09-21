@@ -1,0 +1,17 @@
+.main {
+    padding: 20px;
+    margin: 0px auto;
+    width: 400px;
+h3 {
+    padding: 10px 0 20px;
+    text-align: center;
+}
+button [id=calculator] {
+    background-color: #F45B69;
+    width: 50%;
+    color: white;
+    padding: 15px;
+    margin: 10px 0;
+    border: none;
+    cursor: pointer;
+}
