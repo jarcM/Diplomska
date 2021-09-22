@@ -29,6 +29,11 @@
         </h2>
         <table class="table table-hover table-bordered table-striped">
     {{#each last as |last2|}}
+
+            <tr>
+                <td style="font-weight: bold">Date of workout:</td>
+            <td colspan="5">{{last2.repsWeight.[0].datumWorkout}}</td>
+            </tr>
             <tr>
                 <td>Reps</td>
                 <td>{{last2.repsWeight.[0].reps1}}</td>
@@ -45,6 +50,7 @@
                 <td>{{last2.repsWeight.[0].weight4}} kg</td>
                 <td>{{last2.repsWeight.[0].weight5}} kg</td>
             </tr>
+
     {{/each}}
         </table>
     </div>

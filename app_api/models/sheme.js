@@ -48,6 +48,8 @@ const repWeightShema = new mongoose.Schema({
     weight4: {type: Number, default:0},
     reps5: {type: Number, default:0},
     weight5: {type: Number, default:0},
+    datumWorkout:{type:String},
+
 
 });
 const vajeShema = new mongoose.Schema({

@@ -463,6 +463,7 @@ const addWorkoutToUser = (req, res) => {
                                      difficulty:program.difficulty,
                                      vaje:program.vaje,
                                      datumWorkout:datum2
+
                                  })
                                 uporabnik.save((napaka,uporabnik)=>{
                                     if (napaka) {
@@ -500,19 +501,22 @@ const currentWorkout = (req, res) => {
                             console.log(uporabnik.workouts.length)
                             var stevecWorkoutov=uporabnik.workouts.length-2;
                             var stevecVaj=0;
-                            var array=new Array()
+                            var array=new Array();
+                            var datumArray=new Array();
                             while(stevecWorkoutov!=-1){
                                 for(var i=0;i<uporabnik.workouts[stevecWorkoutov].vaje.length;i++){
                                     if(uporabnik.workouts[stevecWorkoutov].vaje[i].naslov==
                                         uporabnik.workouts[stevec-1].vaje[req.params.counter].naslov){
                                         array[stevecVaj]=uporabnik.workouts[stevecWorkoutov].vaje[i]
+                                        datumArray[stevecVaj]=uporabnik.workouts[stevecWorkoutov].datumWorkout
                                         stevecVaj++;
                                     }
                                 }
                                 stevecWorkoutov--;
                             }
-                            console.log(array)
+                            console.log(datumArray)
                             res.render('currentWorkout',{
+                                datum:datumArray,
                                 program:uporabnik.workouts[stevec-1],
                                 counter:req.params.counter,
                                 vaje:uporabnik.workouts[stevec-1].vaje[req.params.counter],
@@ -537,6 +541,8 @@ const currentWorkout2 = (req, res) => {
                         if(napaka){
                             console.long(napaka)
                         }else{
+                            var datum1=new Date()
+                            var datum2=datum1.getDate()+"/"+datum1.getMonth()+"/"+datum1.getFullYear()
                             var stevec=uporabnik.workouts.length
                             console.log(stevec)
                             var counter=parseInt(req.params.counter) +1
@@ -550,7 +556,8 @@ const currentWorkout2 = (req, res) => {
                             uporabnik.workouts[stevec-1].vaje[req.params.counter].repsWeight[0].weight2=req.body.weight2,
                             uporabnik.workouts[stevec-1].vaje[req.params.counter].repsWeight[0].weight3=req.body.weight3,
                             uporabnik.workouts[stevec-1].vaje[req.params.counter].repsWeight[0].weight4=req.body.weight4,
-                            uporabnik.workouts[stevec-1].vaje[req.params.counter].repsWeight[0].weight5=req.body.weight5
+                            uporabnik.workouts[stevec-1].vaje[req.params.counter].repsWeight[0].weight5=req.body.weight5,
+                            uporabnik.workouts[stevec-1].vaje[req.params.counter].repsWeight[0].datumWorkout=datum2
                             var weight1=req.body.reps1*req.body.weight1
                             var weight2=req.body.reps2*req.body.weight2
                             var weight3=req.body.reps3*req.body.weight3

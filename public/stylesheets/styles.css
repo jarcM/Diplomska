@@ -9,6 +9,7 @@ body {
 	text-align: justify;
 	line-height: 1.7;
 	font-size: 18px;
+	min-height: 100vh;
 }
 .collection_text{
 	color:black;
