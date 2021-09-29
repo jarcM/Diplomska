@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Dogodek = mongoose.model('Dogodek');
 const Uporabnik = mongoose.model('Uporabnik');
 
 

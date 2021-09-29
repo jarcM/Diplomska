@@ -1,4 +1,4 @@
-<form id="dodajVaje" action="" method="post" role="form">
+<form id="addExerciseToWorkout" action="" method="post" role="form">
     <div class="container">
         <div class="container">
             <div class="collection_text">Add exercise</div>
@@ -16,11 +16,25 @@
                     </div>
                     <div class="form-group" style="text-align:center">
                         <button style="align-items: center"class="btn btn-primary" id="uredi">Add exercise</button>
-                        <button onclick="window.location='servicesList'" type="button" id="izbrisi" class="btn btn-light">Cancel</button>
+                        <button onclick="window.location='programsList'" type="button" id="izbrisi" class="btn btn-light">Cancel</button>
                     </div>
                 </div>
-
+                <table id="eventTable" class="table table-hover" style="background-color: #59C3C3;width: 500px;margin: auto; cursor: pointer">
+                    <thead>
+                    <tr>
+                        <th>Workout program</th>
+                        <th >Difficulty</th>
+                    </tr>
+                    </thead>
+                    {{#each exercise as | exercise |}}
+                        <tr >
+                            <td id="uporabnik1">{{naslov}}</td>
+                            <td >{{mainBodyPart}}</td>
+                        </tr>
+                    {{/each}}
+                </table>
         </div>
+
 
     </div>
 </form>

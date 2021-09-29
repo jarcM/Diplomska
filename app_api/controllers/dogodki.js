@@ -177,13 +177,13 @@ const addWeight = (req, res) => {
                                     res.status(400).json(napaka);
                                 } else {
                                     console.log("kekss")
-                                    res.redirect('/trenutniProfil')
+                                    res.redirect('/myProfile')
                                 }
                             })
                         };
                     })
             }else{
-                res.redirect('/prijava')
+                res.redirect('/login')
             }
         })
 };
@@ -202,7 +202,7 @@ const addFriend = (req, res) => {
                             Uporabnik.findOne({username: req.body.addFriend})
                                 .exec((napaka2,uporabnikUsername)=>{
                                 if(!uporabnikUsername){
-                                    res.redirect('/trenutniProfil')
+                                    res.redirect('/myProfile')
                                 }else{
                                     uporabnik.friends.push({
                                     username:req.body.addFriend
@@ -212,7 +212,7 @@ const addFriend = (req, res) => {
                                             res.status(400).json(napaka);
                                         } else {
                                             console.log("kekss")
-                                            res.redirect('/trenutniProfil')
+                                            res.redirect('/myProfile')
                                         }
                                     })
                                 }
@@ -221,7 +221,7 @@ const addFriend = (req, res) => {
                         };
                     })
             }else{
-                res.redirect('/prijava')
+                res.redirect('/login')
             }
         })
 };
@@ -284,7 +284,7 @@ const previousWorkouts = (req, res) => {
                         }
                     });
             }else{
-                res.redirect('/prijava')
+                res.redirect('/login')
             }
         })
 };
@@ -478,7 +478,7 @@ const addWorkoutToUser = (req, res) => {
                 }
             });
             }else{
-                res.redirect('/prijava')
+                res.redirect('/login')
             }
         })
 }
@@ -496,7 +496,7 @@ const currentWorkout = (req, res) => {
                             var stevec=uporabnik.workouts.length
                             console.log(uporabnik.workouts[stevec-1].vaje.length)
                             if(parseInt(req.params.counter)==uporabnik.workouts[stevec-1].vaje.length){
-                                res.redirect('/trenutniProfil')
+                                res.redirect('/myProfile')
                             }else{
                             console.log(uporabnik.workouts.length)
                             var stevecWorkoutov=uporabnik.workouts.length-2;
@@ -526,7 +526,7 @@ const currentWorkout = (req, res) => {
                         };
                     })
             }else{
-                res.redirect('/prijava')
+                res.redirect('/login')
             }
         })
 }
@@ -575,11 +575,11 @@ const currentWorkout2 = (req, res) => {
                         };
                     })
             }else{
-                res.redirect('/prijava')
+                res.redirect('/login')
             }
         })
 }
-const dodajVaje = (req, res) => {-
+const addExerciseToWorkout = (req, res) => {-
     Program.findOne()
         .sort(({_id:-1}))
         .exec((napaka, program) => {
@@ -598,8 +598,8 @@ const dodajVaje = (req, res) => {-
                             Uporabnik.find()
                             Exercise.find()
                                 .sort(({_id:1}))
-                            res.render('dodajVaje',{
-                                title:'dodajVaje2',
+                            res.render('addExerciseToWorkout',{
+                                title:'addExerciseToWorkout',
                                 program,
                                 exercise
 
@@ -611,13 +611,26 @@ const dodajVaje = (req, res) => {-
 }
 
 const addExercise = (req, res) => {
-    res.render('addExercise',{
-        title:'addExercise',
+    Exercise.find()
+        .sort(({_id:1}))
+        .exec((napaka, exercise) => {
+            if (napaka) {
+                console.log(napaka);
+                res.status(400).json(napaka);
+            } else {
+                Exercise.find()
+                    .sort(({_id:1}))
+                res.render('addExercise',{
+                    title:'addExercise',
+                    exercise
+
                 })
+            }
+        });
 }
 
 const prikaziObrazecZaOglas = (req, res) => {
-    res.render('objava', {
+    res.render('addWorkoutProgram', {
         title: 'Nov oglas'
     })
 }
@@ -681,7 +694,7 @@ const shraniOglas = async (req, res) => {
                     difficulty: req.body.difficulty,
                 }
             }).then(() => {
-                res.redirect('/dodajVaje');
+                res.redirect('/addExerciseToWorkout');
             }).catch((napaka) => {
                 console.log(napaka);
             });
@@ -725,7 +738,7 @@ const shraniVaje = async (req, res, program,uporabnik) => {
             if (napaka) {
                 res.status(400).json(napaka);
             } else {
-                res.redirect('/dodajVaje')
+                res.redirect('/addExerciseToWorkout')
             }
         });
     }
@@ -850,7 +863,7 @@ const izbrisi = (req, res) => {
                                         if (napaka) {
                                             return res.status(500).json(napaka);
                                         }
-                                        res.redirect('/servicesList');
+                                        res.redirect('/programsList');
                                     });
                             } else {
                                 res.status(404).json({
@@ -908,7 +921,7 @@ const posodobiDogodek = async (req, res) => {
                 if (napaka) {
                     res.status(404).json(napaka);
                 } else {
-                    res.redirect('/servicesList');
+                    res.redirect('/programsList');
                 }
             });
         });
@@ -948,7 +961,7 @@ const showAddWeight = (req, res, uporabnik1) => {
             };
         })
 };
-const oglasi = (req, res, programi) => {
+const myProgramsList = (req, res, programi) => {
     axios
         .get('api/seja')
         .then((odgovor1)=>{
@@ -959,7 +972,7 @@ const oglasi = (req, res, programi) => {
                         if(napaka){
                             console.log(napaka)
                         }else{
-                            res.render('oglasi', {
+                            res.render('myProgramsList', {
                                 title: 'Moji dogodki',
                                 programi:uporabnik.program
                             })
@@ -987,7 +1000,7 @@ module.exports = {
     shraniDogodek,
     odjavi,
     prijavi,
-    dodajVaje,
+    addExerciseToWorkout,
     izbrisi,
     posodobiDogodek,
     rezervirajDogodek,
@@ -1002,7 +1015,7 @@ module.exports = {
     addWeight,
     getAddWeight,
     addFriend,
-    oglasi,
+    myProgramsList,
     get1rmcalculator,
     bmrcalculator
 };

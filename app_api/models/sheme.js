@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
 
 
-
-
-
 const dogodekShema = new mongoose.Schema({
     naslovOglasa: {type: String},
     kraj: {type: String},
@@ -59,7 +56,7 @@ const vajeShema = new mongoose.Schema({
 });
 const programShema = new mongoose.Schema({
     naslov: {type: String},
-    difficulty: {type: String, default:"Personal"},
+    difficulty: {type: String, default:"intermediate"},
     datumWorkout:{type:String},
     vaje: [vajeShema],
     idMainProgram:{type:String}

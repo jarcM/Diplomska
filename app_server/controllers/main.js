@@ -39,7 +39,7 @@ var home2 = (req, res) => {
     axios
         .get('/api/dogodki/')
         .then((odgovor) => {
-            showServicesList2(req, res, odgovor.data);
+            showprogramsList2(req, res, odgovor.data);
         })
         .catch((napaka) => {
             prikaziNapako(req, res, napaka);
@@ -153,25 +153,25 @@ const showMyEvents = (req, res, dogodki) => {
         dogodki
     })
 }
-const servicesList = (req, res) => {
+const programsList = (req, res) => {
     axios
         .get('/api/dogodki/')
         .then((odgovor) => {
-            showServicesList(req, res, odgovor.data);
+            showprogramsList(req, res, odgovor.data);
         })
         .catch((napaka) => {
             prikaziNapako(req, res, napaka);
         });
 };
 
-const showServicesList = (req, res, programi) => {
-    res.render('servicesList', {
+const showprogramsList = (req, res, programi) => {
+    res.render('programsList', {
         title: 'List oglasov',
         programi
     })
 }
-const showServicesList2 = (req, res, programi) => {
-    res.render('servicesList', {
+const showprogramsList2 = (req, res, programi) => {
+    res.render('programsList', {
         title: 'Programs',
         layout:'layout2',
         programi
@@ -188,19 +188,19 @@ const getOceneSeznam = (req, res) => {
         });
 }
 
-const oglasi = (req, res) => {
+const myProgramsList = (req, res) => {
     axios
         .get('/api/dogodki/')
         .then((odgovor) => {
-            showOglasi(req, res, odgovor.data);
+            showmyProgramsList(req, res, odgovor.data);
         })
         .catch((napaka) => {
             prikaziNapako(req, res, napaka);
         });
 };
 
-const showOglasi = (req, res, programi) => {
-    res.render('oglasi', {
+const showmyProgramsList = (req, res, programi) => {
+    res.render('myProgramsList', {
         title: 'Moji dogodki',
         programi
     })
@@ -289,7 +289,7 @@ const shraniPriljubljeni = (req, res) => {
             priljubljeni:idDogodka
         }
     }).then(() => {
-        res.redirect('/trenutniProfil');
+        res.redirect('/myProfile');
     }).catch((napaka) => {
         prikaziNapako(req, res, napaka);
     });
@@ -319,17 +319,17 @@ const prikaziNapako = (req, res, napaka) => {
 };
 
 
-const trenutniProfil = (req, res) => {
+const myProfile = (req, res) => {
     axios
         .get('/api/uporabniki/' + req.session.Auth)
         .then((odgovor) => {
-            showTrenutniProfil(req, res, odgovor.data);
+            showmyProfile(req, res, odgovor.data);
         })
         .catch((napaka) => {
             res.redirect('/')
         });
 };
-const trenutniProfil2 = (req, res) => {
+const myProfile2 = (req, res) => {
 
     Uporabnik.findOne({username: req.params.username})
         .exec((napaka, uporabnik) => {
@@ -340,7 +340,7 @@ const trenutniProfil2 = (req, res) => {
                 axios
                     .get('/api/uporabniki/' + uporabnik._id)
                     .then((odgovor) => {
-                        showTrenutniProfil2(req, res, odgovor.data);
+                        showmyProfile2(req, res, odgovor.data);
                     })
                     .catch((napaka) => {
                         res.redirect('/')
@@ -349,7 +349,7 @@ const trenutniProfil2 = (req, res) => {
         })
 
 };
-const showTrenutniProfil2 = (req, res, uporabnik) => {
+const showmyProfile2 = (req, res, uporabnik) => {
     Exercise.find()
         .sort(({_id:1}))
         .exec((napaka, exercise) => {
@@ -367,7 +367,7 @@ const showTrenutniProfil2 = (req, res, uporabnik) => {
             };
         })
 };
-const showTrenutniProfil = (req, res, uporabnik) => {
+const showmyProfile = (req, res, uporabnik) => {
     Exercise.find()
         .sort(({_id:1}))
         .exec((napaka, exercise) => {
@@ -377,7 +377,7 @@ const showTrenutniProfil = (req, res, uporabnik) => {
             } else {
                 Exercise.find()
                     .sort(({_id:1}))
-                res.render('trenutniProfil', {
+                res.render('myProfile', {
                     title: "User profile",
                     uporabnik,
                     exercise,
@@ -387,12 +387,12 @@ const showTrenutniProfil = (req, res, uporabnik) => {
 };
 module.exports = {
     getOceneSeznam,
-    servicesList,
+    programsList,
     brisi,
     init,
     profil,
     db,
-    oglasi,
+    myProgramsList,
     home,
     home2,
     eventDetails,
@@ -400,8 +400,8 @@ module.exports = {
     myEvents,
     editEvent,
     addEvent,
-    trenutniProfil,
-    trenutniProfil2,
+    myProfile,
+    myProfile2,
     dodajPriljublene,
     priljubljeniKreiraj,
     shraniPriljubljeni,

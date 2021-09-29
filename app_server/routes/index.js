@@ -19,10 +19,10 @@ router.get('/previousWorkouts/:idDogodka', ctrlDogodki.previousWorkouts);
 
 
 router.get('/AddEvent', ctrlDogodki.dodajDogodek);
-router.get('/objava', ctrlDogodki.dodajOglas);
+router.get('/addWorkoutProgram', ctrlDogodki.dodajOglas);
 router.post('/addWeight', ctrlDogodki.addWeight);
 
-router.get('/dodajVaje', ctrlDogodki.dodajVaje);
+router.get('/addExerciseToWorkout', ctrlDogodki.addExerciseToWorkout);
 router.get("/lol", ctrlDogodki.lol);
 router.post("/lol", ctrlDogodki.lol);
 
@@ -32,35 +32,35 @@ router.post('/addExercise',ctrlDogodki.exerciseKreiraj)
 
 router.post("/AddEvent", ctrlDogodki.shraniDogodek);
 
-router.post("/objava", ctrlDogodki.shraniOglas);
-router.post("/dodajVaje", ctrlDogodki.vajeKreiraj);
+router.post("/addWorkoutProgram", ctrlDogodki.shraniOglas);
+router.post("/addExerciseToWorkout", ctrlDogodki.vajeKreiraj);
 router.get('/EditEvent', ctrlMain.editEvent);
 router.get('/EditEvent/:idDogodka', ctrlDogodki.urediDogodek);
 router.get('/rezervirajDogodek/:idDogodka', ctrlDogodki.rezervirajDogodek);
 router.get('/myEvents', ctrlMain.myEvents);
-router.get('/servicesList', ctrlMain.servicesList)
-router.get('/prijava', ctrlLogin.prijava);
-router.get('/registracija', ctrlLogin.registracija);
-router.get('/splosnipogoji', ctrlLogin.splosnipogoji);
-router.post('/registracija', ctrlUporabniki.shraniUporabnika);
-router.post('/prijava', ctrlUporabniki.preveriUporabnika);
+router.get('/programsList', ctrlMain.programsList)
+router.get('/login', ctrlLogin.login);
+router.get('/registration', ctrlLogin.registration);
+router.get('/termsOfService', ctrlLogin.termsOfService);
+router.post('/registration', ctrlUporabniki.shraniUporabnika);
+router.post('/login', ctrlUporabniki.preveriUporabnika);
 router.get('/profil', ctrlMain.profil);
 router.get('/addWeight', ctrlDogodki.getAddWeight);
 router.get('/1rmcalculator', ctrlDogodki.get1rmcalculator);
 router.get('/bmrcalculator', ctrlDogodki.bmrcalculator);
 
 
-router.get('/trenutniProfil', ctrlMain.trenutniProfil);
-router.get('/servicesList', ctrlMain.servicesList);
-router.get('/oglasi', ctrlDogodki.oglasi);
+router.get('/myProfile', ctrlMain.myProfile);
+router.get('/programsList', ctrlMain.programsList);
+router.get('/myProgramsList', ctrlDogodki.myProgramsList);
 router.post('/uporabniki/izbrisiUporabnika', ctrlUporabniki.izbrisiUporabnika);
 router.get('/seja', ctrlUporabniki.vrniSejo);
 
 router.get('/dogodki/:idDogodka', ctrlMain.eventRating);
 router.get('/domacaStran', ctrlMain.home)
 router.get('/', ctrlMain.home2)
-router.get('/profile/:username',ctrlMain.trenutniProfil2)
-router.post('/trenutniProfil', ctrlDogodki.addFriend);
+router.get('/profile/:username',ctrlMain.myProfile2)
+router.post('/myProfile', ctrlDogodki.addFriend);
 
 router.post('/uporabniki/priljubljeni/:idDogodka', ctrlMain.shraniPriljubljeni);
 

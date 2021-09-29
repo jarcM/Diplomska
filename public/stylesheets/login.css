@@ -10,7 +10,7 @@ input[type=email], input[type=password] , input[id=username], input[type=text]{
 #dodajUporabnik {
     border: 3px solid #52489C;
 }
-#prijavaform {
+#loginform {
     border: 3px solid #52489C;
 }
 button[id=register]{

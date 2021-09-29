@@ -50,19 +50,19 @@ const preveriUporabnika = (req, res) => {
                 return res.redirect('/lol')
             }
             if (!uporabnik) {
-                return res.redirect('/prijava')
+                return res.redirect('/login')
             } else if (napaka) {
-                return res.redirect('/prijava');
+                return res.redirect('/login');
             }
 
             if (trentuniUporabnik === uporabnik.password) {
                 req.session.Auth = uporabnik._id;
                 a = uporabnik._id;
                 console.log(req.session.Auth)
-                res.redirect('/trenutniProfil');
+                res.redirect('/myProfile');
             } else {
                 console.log("napacno geslo");
-                res.redirect('/prijava');
+                res.redirect('/login');
             }
         });
 }
@@ -103,9 +103,9 @@ const shraniUporabnika = (req, res) => {
             vloga: req.body.vloga
         }
     }).then(() => {
-        res.redirect('/prijava')
+        res.redirect('/login')
     }).catch((napaka) => {
-        res.redirect('/prijava')
+        res.redirect('/login')
     });
 }
 const oceneSeznam = (req, res) => {
@@ -132,7 +132,7 @@ const izbrisiUporabnika = (req, res) => {
                 if (napaka) {
                     return res.status(500).json(napaka);
                 }
-                res.redirect('/registracija');
+                res.redirect('/registration');
             });
 }
 const uporabnikiIzbrisiIzbrano = (req, res) => {
