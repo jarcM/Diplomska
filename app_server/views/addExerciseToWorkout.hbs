@@ -1,62 +1,88 @@
-<form id="addExerciseToWorkout" action="" method="post" role="form">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<div id="contact" class="contact-area section-padding">
     <div class="container">
-        <div class="container">
-            <div class="collection_text">Add exercise to program</div>
+        <div class="section-title text-center">
+            <h1>Add exercise to program</h1>
+            <p>Select exercise form list of exercises then add the reps and sets</p>
         </div>
-        <div class="container bg-light2 flex-wrapper">
-            <div class="container">
-                <div class="racing_shoes">
-                    <label>Choose exercise:</label>
-                    <br>
-                    <select id="naslov" name="naslov">
-                        <p>asd</p>
-                        {{#each exercise as |exercise|}}
-                            <option value="{{exercise.naslov}}">{{exercise.naslov}}</option>
-                        {{/each}}
-                    </select>
-                    <br>
-                    <label>Choose Reps:</label>
-                    <div class="form-group2">
-                        <input id="reps1" type="number" class="form-control2" name="reps1" placeholder="0" value="0">
-                    </div>
-                    <div class="form-group2">
-                        <input id="reps2" type="text" class="form-control2" name="reps2" placeholder="0" value="0">
-                    </div>
-                    <div class="form-group2">
-                        <input id="reps3" type="text" class="form-control2" name="reps3" placeholder="0" value="0">
-                    </div>
-                    <div class="form-group2">
-                        <input id="reps4" type="text" class="form-control2" name="reps4" placeholder="0" value="0">
-                    </div>
-                    <div class="form-group2">
-                        <input id="reps5" type="text" class="form-control2" name="reps5" placeholder="0" value="0">
-                    </div>
-                    <div class="form-group" style="text-align:center">
-                        <button style="align-items: center"class="btn btn-primary" id="uredi">Add exercise</button>
-                        <button onclick="if (confirm('Are you sure?'))location.href='/myProfile'" type="button" id="izbrisi" class="btn btn-light">Finish</button>
-                    </div>
-
-
-                    <table class="table table-striped" style="width: 50%;margin-left: 10%;margin-right: 40%; background-color: #59C3C3">
-                        <tr style="color: white">
-                            <th>Exercise name</th>
-                            <th colspan="5" style="text-align: center">Ocena</th>
-                        </tr>
-                        {{#each program.vaje as |vaje|}}
-                            <tr>
-                                <td>{{vaje.naslov}}</td>
-                                <td>{{vaje.repsWeight.[0].reps1}}</td>
-                                <td>{{vaje.repsWeight.[0].reps2}}</td>
-                                <td>{{vaje.repsWeight.[0].reps3}}</td>
-                                <td>{{vaje.repsWeight.[0].reps4}}</td>
-                                <td>{{vaje.repsWeight.[0].reps5}}</td>
-                            </tr>
-                        {{/each}}
-                    </table>
-
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="contact" style="display:flex;justify-content: center;">
+                    <form id="addExerciseToWorkout" action="" method="post" role="form">
+                        <div class="container">
+                            <div class="container">
+                                <div class="collection_text"></div>
+                            </div>
+                            <div class="container bg-light2 flex-wrapper">
+                                <div class="container">
+                                    <div class="racing_shoes" >
+                                        <label style="margin: auto;font-weight: bold">Choose exercise:</label>
+                                        <br>
+                                        <select style="margin: auto" id="naslov" name="naslov">
+                                            <p>asd</p>
+                                            {{#each exercise as |exercise|}}
+                                                <option value="{{exercise.naslov}}">{{exercise.naslov}}</option>
+                                            {{/each}}
+                                        </select>
+                                        <br>
+                                        <br>
+                                        <label style="margin: auto;font-weight: bold">Choose Reps:</label>
+                                        <br>
+                                        <div class="form-group2">
+                                            <input id="reps1" type="number" class="form-control2" name="reps1" placeholder="0" value="0">
+                                        </div>
+                                        <div class="form-group2">
+                                            <input id="reps2" type="text" class="form-control2" name="reps2" placeholder="0" value="0">
+                                        </div>
+                                        <div class="form-group2">
+                                            <input id="reps3" type="text" class="form-control2" name="reps3" placeholder="0" value="0">
+                                        </div>
+                                        <div class="form-group2" style="position: relative">
+                                            <input id="reps4" type="text" class="form-control2" name="reps4" placeholder="0" value="0">
+                                        </div>
+                                        <div class="form-group2">
+                                            <input id="reps5" type="text" class="form-control2" name="reps5" placeholder="0" value="0">
+                                        </div>
+                                        <br>
+                                        <div class="form-group" style="text-align:center">
+                                            <button style="align-items: center"class="btn btn-primary" id="uredi">Add exercise</button>
+                                            <button onclick="if (confirm('Are you sure?'))location.href='/myProfile'" type="button" id="izbrisi" class="btn btn-light">Finish</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            </div>
-        </div>
+            </div><!--- END COL -->
+            <div class="col-lg-5">
+                <table class="table table-striped">
+                    <!--Table head-->
+                    <thead>
+                    <th>Exercise name</th>
+                    <th colspan="5" style="text-align: center">Ocena</th>
+                    </tr>
+                    </thead>
+                    <!--Table head-->
+                    <!--Table body-->
+                    <tbody>
+                    {{#each program.vaje as |vaje|}}
+                        <tr>
+                            <td>{{vaje.naslov}}</td>
+                            <td>{{vaje.repsWeight.[0].reps1}}</td>
+                            <td>{{vaje.repsWeight.[0].reps2}}</td>
+                            <td>{{vaje.repsWeight.[0].reps3}}</td>
+                            <td>{{vaje.repsWeight.[0].reps4}}</td>
+                            <td>{{vaje.repsWeight.[0].reps5}}</td>
+                        </tr>
+                    {{/each}}
 
-    </div>
-</form>
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div><!--- END ROW -->
+    </div><!--- END CONTAINER -->
+</div>

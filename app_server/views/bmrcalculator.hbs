@@ -1,35 +1,43 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
-<div class="main">
+<div id="contact" class="contact-area section-padding">
     <div class="container">
-        <div class="collection_text">Calculate your BMR</div>
-    </div>
-    <form>
-        <div class="form-group">
-            <label>AGE</label>
-            <input type="text" name="age" class="form-control" placeholder="0">
+        <div class="section-title text-center">
+            <h1>Calculate your BMR</h1>
+            <p>Enter your age, gender, height and weight then click calculate to calculate your bmr</p>
         </div>
-        <p></p>
-        <label name = "male">Male</label>
-        <input type = "radio"  id = "gender" name="gender" value = "male"/>
-        <label name = "female">Female </label>
-        <input type = "radio"  id = "gender" name="gender" value = "female"/>
-        <p></p>
-        <div class="form-group">
-            <label>HEIGHT</label>
-            <input type="text" name="height" class="form-control" placeholder="0">
-        </div>
-        <div class="form-group">
-            <label>WEIGHT</label>
-            <input type="text" name="weight" class="form-control" placeholder="0">
-        </div>
-        <button type="submit" style="align-items: center"class="submit btn btn-primary" id="uredi">CALCULATE</button>
-    </form>
-    <h3 class="answer"></h3>
+        <div class="row">
+            <div class="col-lg-17" style="margin: auto">
+                <div class="contact">
+                    <form>
+                        <div class="form-group">
+                            <label>AGE</label>
+                            <input type="text" name="age" class="form-control" placeholder="0">
+                        </div>
+                        <p></p>
+                        <label name = "male">Male</label>
+                        <input type = "radio"  id = "gender" name="gender" value = "male"/>
+                        <label name = "female">Female </label>
+                        <input type = "radio"  id = "gender" name="gender" value = "female"/>
+                        <p></p>
+                        <div class="form-group">
+                            <label>HEIGHT</label>
+                            <input type="text" name="height" class="form-control" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label>WEIGHT</label>
+                            <input type="text" name="weight" class="form-control" placeholder="0">
+                        </div>
+                        <button type="submit" onclick="myFunction()" style="align-items: center"class="submit btn btn-primary" id="uredi">CALCULATE</button>
+                    </form>
+
+                </div>
+            </div><!--- END COL -->
+        </div><!--- END ROW -->
+    </div><!--- END CONTAINER -->
 </div>
 <script>
-    $('.submit').click(function(e) {
-        e.preventDefault();
-        var height, weight = 0;
+    function myFunction() {
         var age = parseFloat($('input[name="age"]').val());
         var weight = parseFloat($('input[name="weight"]').val());
         var height = parseFloat($('input[name="height"]').val());
@@ -42,8 +50,10 @@
         if(gender== "female"){
             BMRCalculation = 10*weight + 6.25*height -5*age -161;
         }
+        console.log(BMRCalculation);
         $('.answer').html('Your BMR is: ' + BMRCalculation );
-    });
+        event.preventDefault();
+    }
 
 </script>
 <link rel="stylesheet" href="../../stylesheets/basic.css">

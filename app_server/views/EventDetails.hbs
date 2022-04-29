@@ -1,24 +1,43 @@
-<form id="dodajWorkout" action="" method="post" role="form">
-    <div class="container">
-        <div class="container">
-            <div class="collection_text">{{program.naslov}}</div>
+<div class="container">
+    <div class="container mt-4">
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <!-- Grid row -->
+                <div class="row">
+                    <!-- Grid column -->
+                    <div class="col-md-12">
+                        <h2 class="pt-3 pb-4 text-center font-bold font-up deep-purple-text">{{program.naslov}}</h2>
+
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+                <!--Table-->
+                <form id="dodajWorkout" action="" method="post" role="form">
+                    <div class="container">
+                        <div class="container">
+                            <div class="collection_text">{{program.naslov}}</div>
+                        </div>
+                        <table class="table table-hover table-bordered table-striped">
+                            {{#each program.vaje as |vaje|}}
+                                <tr>
+                                    <td>{{vaje.naslov}}</td>
+                                    <td>{{vaje.repsWeight.[0].reps1}}</td>
+                                    <td>{{vaje.repsWeight.[0].reps2}}</td>
+                                    <td>{{vaje.repsWeight.[0].reps3}}</td>
+                                    <td>{{vaje.repsWeight.[0].reps4}}</td>
+                                    <td>{{vaje.repsWeight.[0].reps5}}</td>
+                                </tr>
+                            {{/each}}
+                        </table>
+                        <div class="form-group" style="text-align:center">
+                            <button style="align-items: center"class="btn btn-primary" id="uredi">Start workout</button>
+                        </div>
+                    </div>
+                </form>
+                <!--Table-->
+            </div>
         </div>
-        <table class="table table-hover table-bordered table-striped">
-            {{#each program.vaje as |vaje|}}
-                <tr>
-                    <td>{{vaje.naslov}}</td>
-                    <td>{{vaje.repsWeight.[0].reps1}}</td>
-                    <td>{{vaje.repsWeight.[0].reps2}}</td>
-                    <td>{{vaje.repsWeight.[0].reps3}}</td>
-                    <td>{{vaje.repsWeight.[0].reps4}}</td>
-                    <td>{{vaje.repsWeight.[0].reps5}}</td>
-                </tr>
-            {{/each}}
-        </table>
-        <div class="form-group" style="text-align:center">
-            <button style="align-items: center"class="btn btn-primary" id="uredi">Start workout</button>
-        </div>
+
     </div>
-</form>
-
-

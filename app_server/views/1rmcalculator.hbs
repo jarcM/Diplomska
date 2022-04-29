@@ -1,25 +1,32 @@
-<div class="main">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<div id="contact" class="contact-area section-padding">
     <div class="container">
-        <div class="collection_text">Calculate your one rep max</div>
-    </div>
-    <form>
-        <div class="form-group">
-            <label>WEIGHT</label>
-            <input type="text" name="weight" class="form-control" placeholder="0">
+        <div class="section-title text-center">
+            <h1>Calculate your 1RM</h1>
+            <p>Enter your desired weight and reps then press calculate to calculate your one rep max</p>
         </div>
-        <div class="form-group">
-            <label>REPS</label>
-            <input type="text" name="reps" class="form-control" placeholder="0">
-        </div>
-        <button type="submit" style="align-items: center"class="submit btn btn-primary" id="uredi">CALCULATE</button>
-    </form>
-    <h3 class="answer"></h3>
+        <div class="row">
+            <div class="col-lg-17" style="margin: auto">
+                <div class="contact">
+                    <form>
+                        <div class="form-group">
+                            <label>WEIGHT</label>
+                            <input type="text" name="weight" class="form-control" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label>REPS</label>
+                            <input type="text" name="reps" class="form-control" placeholder="0">
+                        </div>
+                        <button type="submit" style="align-items: center"class="submit btn btn-primary" id="uredi">CALCULATE</button>
+                    </form>
+                </div>
+            </div><!--- END COL -->
+        </div><!--- END ROW -->
+    </div><!--- END CONTAINER -->
 </div>
-<script src=""></script>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script>
-    $('.submit').click(function(e) {
-        e.preventDefault();
+    function myFunction() {
         var weight, reps = 0;
         var weight = parseFloat($('input[name="weight"]').val());
         var reps = parseFloat($('input[name="reps"]').val());
@@ -27,6 +34,9 @@
         var oneRepMax = Math.round((100 * weight) / (101.3 - (2.67123 * reps)));
 
         $('.answer').html('Your One Rep Max is: ' + oneRepMax);
-    });
+        event.preventDefault();
+
+    }
+
 </script>
 <link rel="stylesheet" href="../../stylesheets/basic.css">

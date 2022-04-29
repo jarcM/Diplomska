@@ -1,23 +1,46 @@
 <div class="container">
-    <div class="container">
-        <div class="collection_text">Programs</div>
+    <div class="container mt-4">
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <!-- Grid row -->
+                <div class="row">
+                    <!-- Grid column -->
+                    <div class="col-md-12">
+                        <h2 class="pt-3 pb-4 text-center font-bold font-up deep-purple-text">Available programs</h2>
+
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+                <!--Table-->
+                <table class="table table-striped">
+                    <!--Table head-->
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Workout programs</th>
+                        <th>Difficulty</th>
+                    </tr>
+                    </thead>
+                    <!--Table head-->
+                    <!--Table body-->
+                    <tbody>
+                    {{#each programi as | programi |}}
+                        <tr onclick="window.location = '/eventDetails/{{_id}}'">
+                            <td style="font-weight: bold">{{@index}}</td>
+                            <td id="uporabnik1">{{naslov}}</td>
+                            <td >{{difficulty}}</td>
+
+                        </tr>
+                    {{/each}}
+
+
+                    </tbody>
+                    <!--Table body-->
+                </table>
+                <!--Table-->
+            </div>
+        </div>
+
     </div>
-    <div class="table-responsive-sm">
-        <table id="eventTable" class="table table-hover" style="background-color: #59C3C3;width: 500px;margin: auto; cursor: pointer">
-            <thead>
-            <tr>
-                <th>Workout program</th>
-                <th>Difficulty</th>
-            </tr>
-            </thead>
-            <tbody>
-            {{#each programi as | programi |}}
-                <tr onclick="window.location = '/eventDetails/{{_id}}'">
-                    <td id="uporabnik1">{{naslov}}</td>
-                    <td >{{difficulty}}</td>
-                </tr>
-            {{/each}}
-            </tbody>
-        </table>
-    </div>
-</div>

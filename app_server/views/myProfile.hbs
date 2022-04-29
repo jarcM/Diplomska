@@ -1,83 +1,131 @@
-<div class="about_main layout_padding">
+<div class="container">
+    <div class="main-body">
 
-    <div class="collection_section">
-        <div class="container">
-            <div class="collection_text">Profile</div>
-        </div>
-    </div>
-    <div class="container bg-light2 flex-wrapper">
-        <div class="row bg-light">
-            <div class="col bg-light2">
-            <table class="table table-hover table-bordered table-dark" style="width: 50%;margin-left: 40%;margin-right: 25%; background-color: #59C3C3; cursor: pointer">
-            <tr>
-                <th  style="color: black">Previous workouts</th>
-                <th style="color: black"> Date of workout</th>
-            </tr>
-            {{#each uporabnik.workouts as |workouts|}}
-                <tr>
-                    <td style="color: black" onclick="window.location = '/previousWorkouts/{{@index}}'" style="text-align: center">{{workouts.naslov}}</td>
-                    <td style="color: black">{{workouts.datumWorkout}}</td>
-                </tr>
-            {{/each}}
-        </table>
-            </div>
-            <div class="col" >
-                <div class="row mb-5">
-                    <table style="background-color: #59C3C3" class="table table-hover table-bordered table-dark" style="width: 50%;background-color: #59C3C3; margin-left: auto;margin-right: auto">
-                        <tr>
-                            <td   style="font-weight: bold;color: black">Uporabnisko ime</td>
-                            <td style="color: black">{{uporabnik.username}}</td>
-                        </tr>
-                        <tr>
-                            <td style="font-weight: bold;color: black">Email</td>
-                            <td style="color: black">{{uporabnik.email}}</td>
-                        </tr>
-                        <tr>
-                            <td style="font-weight: bold;color: black">Birth date</td>
-                            <td style="color: black">{{uporabnik.datum}}</td>
-                        </tr>
-                        <tr>
-                            <td style="font-weight: bold;color: black">Total Kg lifted</td>
-                            <td style="color: black">{{uporabnik.totalKgLifted}}</td>
-                        </tr>
-                    </table>
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">myProfile</li>
+            </ol>
+        </nav>
+        <!-- /Breadcrumb -->
+
+        <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                            <div class="mt-3">
+                                <h4>{{uporabnik.username}}</h4>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div style="display: flex" >
-                    <button style="margin: auto" class="btn"><i onclick="window.location='/addWeight'" class="fas fa-weight fa-10x"></i></button>
-                </div>
-                <div class="row">
-                    <div class="col"></div>
+                <div class="card mt-3">
+                    <ul class="list-group list-group-flush">
+                        <li style="justify-content: center;display: flex;font-weight: bold">
+                            Track your weight
+                      </li>
+                        <div style="display: flex" >
+                            <button style="margin: auto" class="btn"><i onclick="window.location='/addWeight'" class="fas fa-weight fa-10x"></i></button>
+                        </div>
+                    </ul>
                 </div>
             </div>
+            <div class="col-md-8">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Username</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{uporabnik.username}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Email</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{uporabnik.email}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Birth date</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{uporabnik.datum}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Total Kg lifted<</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{uporabnik.totalKgLifted}}
+                            </div>
+                        </div>
+                        <hr>
 
-            <div class="col">
-                <form id="dodajPrijatelja" action="" method="post" role="form">
-                        <div class="container bg-light2 flex-wrapper">
-                            <div class="container">
-                                    <div class="col bg-light2">
-                                        <table class="table table-hover table-bordered table-dark" style="width: 100%; background-color: #59C3C3; cursor: pointer">
-                                            <tr>
-                                                <th  style="color: black" >Friends</th>
-                                            </tr>
-                                            {{#each uporabnik.friends as |friends|}}
-                                                <tr>
-                                                    <td style="color: black" onclick="window.location = '/profile/{{friends.username}}'" style="text-align: center">{{friends.username}}</td>
-                                                </tr>
-                                            {{/each}}
-                                        </table>
-                                        <div class="form-group">
-                                            <label>Add a friend:</label>
-                                            <input id="addFriend" type="text" class="form-control" name="addFriend" required placeholder="Enter friends username">
-                                            <div class="form-group" style="text-align:center">
-                                                <button style="align-items: center"class="btn btn-primary" id="uredi">Confirm</button>
-                                            </div>
-                                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row gutters-sm">
+                    <div class="col-sm-6 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Previous workouts</i>Date of workout</h6>
+                                <table>
+                                    <tr>
+                                        <th  style="color: black;position:absolute"></th>
+                                        <th style="color: black;position: relative"></th>
+                                    </tr>
+                                    {{#each uporabnik.workouts as |workouts|}}
+                                        <tr>
+                                            <td style="color: black" onclick="window.location = '/previousWorkouts/{{@index}}'" style="text-align: center">{{workouts.naslov}}</td>
+                                            <td style="color: black">{{workouts.datumWorkout}}</td>
+                                        </tr>
+                                    {{/each}}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Friends</i></h6>
+                                <table >
+
+                                    {{#each uporabnik.friends as |friends|}}
+                                        <tr>
+                                            <td style="color: black" onclick="window.location = '/profile/{{friends.username}}'" style="text-align: center">{{friends.username}}</td>
+                                        </tr>
+                                    {{/each}}
+                                </table>
+                                <div class="form-group">
+                                    <label>Add a friend:</label>
+                                    <input id="addFriend" type="text" class="form-control" name="addFriend" required placeholder="Enter friends username">
+                                    <div class="form-group" style="text-align:center">
+                                        <button style="align-items: center"class="btn btn-primary" id="uredi">Confirm</button>
                                     </div>
                                 </div>
                             </div>
-                </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
             </div>
-
         </div>
-</div>
 
+    </div>
+</div>

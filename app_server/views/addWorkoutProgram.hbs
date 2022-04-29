@@ -1,46 +1,61 @@
-<form id="dodajOglas" action="" method="post" role="form">
-        <div class="container">
-            <div class="collection_text">Make a workout program</div>
-        </div>
-    <br><br>
-                    <div class="form-group" style="padding: 4px">
-                        <p style="text-align: center;color: black">Program name :</p>
-                        <input style=" padding: 10px; margin: 0px auto; width: 400px;" id="naslov" type="text" class="form-control" name="naslov" required>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
-                    </div>
-                    <div class="container" style="text-align: left; display:flex; flex-direction: column; align-items: center">
-                        <div class="row">
-                            <div class="col-xs-12-col-md-6">
-                                <div class="form-group">
-                                    <label style="color: black">Program difficulty</label>
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input  id="difficulty" type="radio" class="form-check-input" name="difficulty"
-                                                   value="amateur">Amateur
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input id="difficulty" type="radio" class="form-check-input" name="difficulty"
-                                                   value="intermediate" style="color: black">Intermediate
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input id="difficulty" type="radio" class="form-check-input" name="difficulty"
-                                                   value="advanced">Advanced
-                                        </label>
+<div id="contact" class="contact-area section-padding">
+    <div class="container">
+        <div class="section-title text-center">
+            <h1>Make a workout program</h1>
+            <p>Enter the program name, program difficulty and description and then proceed to adding the exercises</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-17" style="margin: auto">
+                <div class="contact">
+                    <form id="dodajOglas" action="" method="post" role="form">
+
+                        <br><br>
+                        <div class="form-group" style="padding: 4px">
+                            <p style="text-align: center;color: black">Program name :</p>
+                            <input style=" padding: 10px; margin: 0px auto; width: 400px;" id="naslov" type="text" class="form-control" name="naslov" required>
+
+                        </div>
+                        <div class="container" style="text-align: left; display:flex; flex-direction: column; align-items: center">
+                            <div class="row">
+                                <div class="col-xs-12-col-md-6">
+                                    <div class="form-group">
+                                        <label style="color: black">Program difficulty</label>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input  id="difficulty" type="radio" class="form-check-input" name="difficulty"
+                                                        value="amateur">Amateur
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input id="difficulty" type="radio" class="form-check-input" name="difficulty"
+                                                       value="intermediate" style="color: black">Intermediate
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input id="difficulty" type="radio" class="form-check-input" name="difficulty"
+                                                       value="advanced">Advanced
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group" style="padding: 4px">
-                        <p style="text-align: center;color: black">Describe the program:</p>
-                        <textarea style="" id="opisZahtev" class="form-control" rows="5" name="opisZahtev" required></textarea>
-                    </div>
-                    <div class="form-group" style="text-align:center">
-                        <button style="align-items: center"class="btn btn-primary" id="uredi">Submit</button>
-                        <button onclick="window.location='programsList'" type="button" id="izbrisi" class="btn btn-light">Cancel</button>
-                    </div>
-</form>
+                        <div class="form-group" style="padding: 4px">
+                            <p style="text-align: center;color: black">Describe the program:</p>
+                            <textarea style="" id="opisZahtev" class="form-control" rows="5" name="opisZahtev" required></textarea>
+                        </div>
+                        <div class="form-group" style="text-align:center">
+                            <button style="align-items: center"class="btn btn-primary" id="uredi">Submit</button>
+                            <button onclick="window.location='programsList'" type="button" id="izbrisi" class="btn btn-light">Cancel</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div><!--- END COL -->
+        </div><!--- END ROW -->
+    </div><!--- END CONTAINER -->
+</div>
