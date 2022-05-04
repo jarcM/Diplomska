@@ -90,8 +90,8 @@
                                     </tr>
                                     {{#each uporabnik.workouts as |workouts|}}
                                         <tr>
-                                            <td style="color: black" onclick="window.location = '/previousWorkouts/{{@index}}'" style="text-align: center">{{workouts.naslov}}</td>
-                                            <td style="color: black">{{workouts.datumWorkout}}</td>
+                                            <td class="hoverProfile" style="color: black" onclick="window.location = '/previousWorkouts/{{@index}}'" style="text-align: center">{{workouts.naslov}}</td>
+                                            <td style="color: black;padding-left: 75px">{{workouts.datumWorkout}}</td>
                                         </tr>
                                     {{/each}}
                                 </table>
@@ -106,7 +106,7 @@
 
                                     {{#each uporabnik.friends as |friends|}}
                                         <tr>
-                                            <td style="color: black" onclick="window.location = '/profile/{{friends.username}}'" style="text-align: center">{{friends.username}}</td>
+                                            <td class="hoverProfile" style="color: black" onclick="window.location = '/profile/{{friends.username}}'" style="text-align: center">{{friends.username}}</td>
                                         </tr>
                                     {{/each}}
                                 </table>

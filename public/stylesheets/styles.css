@@ -144,7 +144,10 @@ a.article:hover {
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
+.hoverProfile:hover{
+	font-weight: bold;
 
+}
 #content {
 	width: 100%;
 	padding: 20px;

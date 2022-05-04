@@ -149,7 +149,7 @@ const myEvents = (req, res) => {
 
 const showMyEvents = (req, res, dogodki) => {
     res.render('myEvents', {
-        title: 'List oglasov',
+        title: 'Available programs',
         dogodki
     })
 }
@@ -166,7 +166,7 @@ const programsList = (req, res) => {
 
 const showprogramsList = (req, res, programi) => {
     res.render('programsList', {
-        title: 'List oglasov',
+        title: 'Programs',
         programi
     })
 }
@@ -201,7 +201,7 @@ const myProgramsList = (req, res) => {
 
 const showmyProgramsList = (req, res, programi) => {
     res.render('myProgramsList', {
-        title: 'Moji dogodki',
+        title: 'My programs',
         programi
     })
 }

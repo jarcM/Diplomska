@@ -167,7 +167,8 @@ const addWeight = (req, res) => {
                         }else{
                             console.log("kekwwww")
                             var today=new Date()
-                            var date=today.getDate()+"/"+today.getMonth()+"/"+today.getFullYear()
+                            var todayMonth=today.getMonth()+1;
+                            var date=today.getDate()+"/"+todayMonth+"/"+today.getFullYear()
                             uporabnik.weight.push({
                                 weight:req.body.naslov,
                                 date:date
@@ -456,8 +457,10 @@ const addWorkoutToUser = (req, res) => {
                                 console.long(napaka)
                             }else{
                                 console.log("kek")
-                                var datum1=new Date()
-                                var datum2=datum1.getDate()+"/"+datum1.getMonth()+"/"+datum1.getFullYear()
+                                let datum1=new Date()
+                                console.log(datum1);
+                                let datumMonth=datum1.getMonth()+1;
+                                let datum2=datum1.getDate()+"/"+datumMonth+"/"+datum1.getFullYear();
                                  uporabnik.workouts.push({
                                      naslov:program.naslov,
                                      difficulty:program.difficulty,
@@ -542,7 +545,8 @@ const currentWorkout2 = (req, res) => {
                             console.long(napaka)
                         }else{
                             var datum1=new Date()
-                            var datum2=datum1.getDate()+"/"+datum1.getMonth()+"/"+datum1.getFullYear()
+                            var datumMonth2=datum1.getMonth()+1;
+                            var datum2=datum1.getDate()+"/"+datumMonth2+"/"+datum1.getFullYear()
                             var stevec=uporabnik.workouts.length
                             console.log(stevec)
                             var counter=parseInt(req.params.counter) +1
@@ -631,7 +635,7 @@ const addExercise = (req, res) => {
 
 const prikaziObrazecZaOglas = (req, res) => {
     res.render('addWorkoutProgram', {
-        title: 'Nov oglas'
+        title: 'New Program'
     })
 }
 
@@ -973,7 +977,7 @@ const myProgramsList = (req, res, programi) => {
                             console.log(napaka)
                         }else{
                             res.render('myProgramsList', {
-                                title: 'Moji dogodki',
+                                title: 'My programs',
                                 programi:uporabnik.program
                             })
                         };
