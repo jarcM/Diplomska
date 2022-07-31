@@ -18,8 +18,9 @@
                             <label>REPS</label>
                             <input type="text" name="reps" class="form-control" placeholder="0">
                         </div>
-                        <button type="submit" style="align-items: center"class="submit btn btn-primary" id="uredi">CALCULATE</button>
+                        <button onclick="myFunction()"  style="align-items: center"class="submit btn btn-primary" id="uredi">CALCULATE</button>
                     </form>
+                    <h3 class="answer"></h3>
                 </div>
             </div><!--- END COL -->
         </div><!--- END ROW -->
@@ -27,14 +28,14 @@
 </div>
 <script>
     function myFunction() {
+        event.preventDefault();
         var weight, reps = 0;
         var weight = parseFloat($('input[name="weight"]').val());
         var reps = parseFloat($('input[name="reps"]').val());
 
         var oneRepMax = Math.round((100 * weight) / (101.3 - (2.67123 * reps)));
-
+        console.log(oneRepMax)
         $('.answer').html('Your One Rep Max is: ' + oneRepMax);
-        event.preventDefault();
 
     }
 
